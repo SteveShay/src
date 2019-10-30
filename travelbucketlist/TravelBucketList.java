@@ -5,9 +5,11 @@ package travelbucketlist;
  * Project main class. Currently being used as a testing ground.
  * @authors Steve Shay
  */
+import Database.DatabaseTranslator;
 import java.io.IOException;
-import models.LoadData;
+import Database.LoadData;
 import models.VacationLocation;
+import models.User.*;
 import models.User;
 import static Enumeration.Enumeration.*;
 import api.APITranslator;
@@ -27,7 +29,7 @@ public class TravelBucketList {
 
         //Test API calls for flights.
         try{
-            APITranslator.getExpectedFlightCost(bob, NY, "2019-12-22");
+            APITranslator.getExpectedFlightCost(bob.getAirportCode(), NY.getAirportCode(), "2019-12-22");
         }
         catch(Exception e){
             System.out.println("error");
@@ -35,44 +37,35 @@ public class TravelBucketList {
         }
 
         //Test loading user from file.
-        String userFileData = LoadData.userLoadFile("James Bond");
+        String userFileData = DatabaseTranslator.getUserData("James Bond");
         String[] userData = userFileData.split(INPUT_SPLIT);
-        String locationFileData = LoadData.locationLoadFile("New York City");
+        String locationFileData = DatabaseTranslator.getLocationData("New York City");
         String[] locationData = locationFileData.split(INPUT_SPLIT);
 
         //Test User object data load and getters
         User JamesTest = CreateUserFromInput.createUser(userData);
         VacationLocation NYC = CreateVacationLocationFromInput.createLocation(locationData);
-        System.out.println("");
-        System.out.println(JamesTest.getName());
-        System.out.println(JamesTest.getZipCode());
-        System.out.println(JamesTest.getAirportCode());
-
-        //test user response load to array
-        System.out.print(JamesTest.getSingleResponse(3));
-        System.out.print(" ");
-        System.out.print(JamesTest.getSingleResponse(20));
-        System.out.print(" ");
-        System.out.println(JamesTest.getSingleResponse(25));
-        System.out.print(" ");
-        //test integer attribute
-        System.out.println(JamesTest.getSingleResponse(3)+JamesTest.getSingleResponse(20)+JamesTest.getSingleResponse(25));
 
         try{
-            double cost = APITranslator.getExpectedFlightCost(JamesTest, NYC, "2019-12-22");
-            System.out.println(cost);
+            double cost = APITranslator.getExpectedFlightCost(JamesTest.getAirportCode(), NYC.getAirportCode(), "2019-12-22");
+            System.out.format("response: %.2f", cost);
+            System.out.println("");
         }
         catch(Exception e){
             System.out.println("error");
         }
-        /*This call doesn't work properly in the api test environment.
-        I will be seeking a new option for hotel pricing
-        */
-        /*try{
-            apiPrototype.getHotels();
-        }
-        catch(ResponseException e){
-            System.out.println(e);
-        }*/
+
+        System.out.println("");
+
+        double hotelPrice = APITranslator.getExpectedHotelCost("NYC");
+        System.out.format("response: %.2f", hotelPrice);
+        System.out.println("");
+
+        double[] latAndLong = DatabaseTranslator.getLocationFromZip(JamesTest.getZipCode());
+        System.out.println(latAndLong[0]);
+        System.out.println(latAndLong[1]);
+
+        String aircode = APITranslator.getAirportCode(latAndLong[0], latAndLong[1]);
+        System.out.println("Walkertown: " + aircode);
     }
 }

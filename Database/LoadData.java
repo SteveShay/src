@@ -1,4 +1,4 @@
-package models;
+package Database;
 
 import static Enumeration.Enumeration.*;
 import java.io.BufferedReader;
@@ -13,19 +13,8 @@ import java.io.IOException;
  * @authors Steve Shay
  */
 public class LoadData {
-    public static String userLoadFile (String _name) throws FileNotFoundException, IOException{
-        String filepath = USER_FILEPATH + _name + TXT;
-        File inputFile = new File(filepath);
-
-        BufferedReader br = new BufferedReader(new FileReader(inputFile));
-
-        String inputLine = br.readLine();
-
-        return inputLine;
-    }
-
-    public static String locationLoadFile (String _name) throws FileNotFoundException, IOException{
-        String filepath = LOCATION_FILEPATH + _name + TXT;
+    static String LoadFile (String _FilepathStub, String _name) throws FileNotFoundException, IOException{
+        String filepath = _FilepathStub + _name + TXT;
         File inputFile = new File(filepath);
 
         BufferedReader br = new BufferedReader(new FileReader(inputFile));
