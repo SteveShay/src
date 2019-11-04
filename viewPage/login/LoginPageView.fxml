@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homePage.login.LoginController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewPage.login.LoginController">
    <top>
       <AnchorPane prefHeight="600.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
@@ -28,8 +28,8 @@
                   <Font name="Garamond Bold" size="18.0" />
                </font>
             </Label>
-            <TextField blendMode="MULTIPLY" layoutX="87.0" layoutY="241.0" prefHeight="28.0" prefWidth="209.0" />
-            <Button blendMode="DARKEN" layoutX="216.0" layoutY="300.0" mnemonicParsing="false" onAction="#goHome" text="Cancel" underline="true">
+            <TextField blendMode="MULTIPLY" layoutX="87.0" layoutY="241.0" onAction="#showLoginFullNameField" prefHeight="28.0" prefWidth="209.0" />
+            <Button blendMode="DARKEN" layoutX="216.0" layoutY="300.0" mnemonicParsing="false" onAction="#loginPageCancel" text="Cancel" underline="true">
                <font>
                   <Font name="Garamond Bold" size="17.0" />
                </font>

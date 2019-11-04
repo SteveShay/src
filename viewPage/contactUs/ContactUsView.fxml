@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homePage.contactUs.contactUsController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewPage.contactUs.contactUsController">
    <center>
       <AnchorPane prefHeight="600.0" prefWidth="358.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="600.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../view/mainBackgro.jpg" />
+                  <Image url="@../home/mainBackgro.jpg" />
                </image>
             </ImageView>
             <ImageView blendMode="EXCLUSION" fitHeight="197.0" fitWidth="200.0" layoutX="200.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
@@ -49,10 +49,10 @@
                   <Font name="Garamond Bold" size="22.0" />
                </font>
             </Label>
-            <TextField blendMode="COLOR_BURN" layoutX="47.0" layoutY="171.0" prefHeight="25.0" prefWidth="276.0" />
-            <TextField blendMode="COLOR_BURN" layoutX="47.0" layoutY="308.0" prefHeight="25.0" prefWidth="276.0" />
-            <TextField blendMode="COLOR_BURN" layoutX="47.0" layoutY="238.0" prefHeight="25.0" prefWidth="276.0" />
-            <TextArea blendMode="COLOR_BURN" layoutX="52.0" layoutY="373.0" prefHeight="106.0" prefWidth="280.0" />
+            <TextField blendMode="OVERLAY" layoutX="47.0" layoutY="171.0" prefHeight="25.0" prefWidth="276.0" />
+            <TextField blendMode="OVERLAY" layoutX="47.0" layoutY="308.0" prefHeight="25.0" prefWidth="276.0" />
+            <TextField blendMode="OVERLAY" layoutX="47.0" layoutY="238.0" prefHeight="25.0" prefWidth="276.0" />
+            <TextArea blendMode="OVERLAY" layoutX="52.0" layoutY="373.0" prefHeight="106.0" prefWidth="280.0" />
             <Button blendMode="DARKEN" layoutX="143.0" layoutY="507.0" mnemonicParsing="false" onAction="#goHome" text="Submit">
                <font>
                   <Font name="Garamond Bold" size="22.0" />
