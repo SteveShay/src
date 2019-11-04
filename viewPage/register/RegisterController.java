@@ -1,4 +1,4 @@
-package homePage.register;
+package viewPage.register;
 /**
  * This is the register page controller for the American Traveller Bucket list webapp.
  *  It switch the new user page and go back home page in the page.
@@ -7,8 +7,9 @@ package homePage.register;
  */
 
 import java.io.IOException;
-import homePage.Main;
+
 import javafx.fxml.FXML;
+import viewPage.Main;
 
 public class RegisterController {
 	private Main main;

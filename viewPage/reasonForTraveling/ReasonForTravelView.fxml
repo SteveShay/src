@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewPage.reasonForTraveling.ReasonForTravelingConroller">
+   <center>
+      <AnchorPane prefHeight="600.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView blendMode="DARKEN" fitHeight="600.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../GitHub%20-%20Copy/src/viewPage/home/mainBackgro.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="116.0" layoutY="14.0" text="Welcome to">
+               <font>
+                  <Font name="Garamond Bold" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="11.0" layoutY="49.0" text="American Travellers Bucketlist">
+               <font>
+                  <Font name="Garamond Bold" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="46.0" layoutY="103.0" text="Other reasons for your travel?">
+               <font>
+                  <Font name="Garamond Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="6.0" layoutY="138.0" prefHeight="27.0" prefWidth="366.0" text="Are you trying to make memories?  ">
+               <font>
+                  <Font name="Garamond Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="3.0" layoutY="210.0" prefHeight="27.0" prefWidth="394.0" text="Trying to gaining a sense of perspective ">
+               <font>
+                  <Font name="Garamond Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="4.0" layoutY="310.0" prefHeight="27.0" prefWidth="348.0" text="Are you travling for a great food? ">
+               <font>
+                  <Font name="Garamond Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="382.0" prefHeight="27.0" prefWidth="365.0" text="Are you trying to bond with family  ">
+               <font>
+                  <Font name="Garamond Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="409.0" prefHeight="27.0" prefWidth="122.0" text="or friends?">
+               <font>
+                  <Font name="Garamond Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="81.0" layoutY="237.0" prefHeight="27.0" prefWidth="194.0" text="and appreciation?">
+               <font>
+                  <Font name="Garamond Bold" size="20.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="newAdventureIntersted" blendMode="MULTIPLY" layoutX="31.0" layoutY="172.0" mnemonicParsing="false" text="Intersted" textFill="#ee0000">
+               <font>
+                  <Font name="Garamond Bold" size="19.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="newAdventure" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="newAdventureIntersted2" blendMode="MULTIPLY" layoutX="190.0" layoutY="172.0" mnemonicParsing="false" text="Not Intersted" textFill="#ee0000">
+               <font>
+                  <Font name="Garamond Bold" size="19.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="newAdventure2" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="newAdventureIntersted1" blendMode="MULTIPLY" layoutX="203.0" layoutY="436.0" mnemonicParsing="false" text="Not Intersted" textFill="#ee0000">
+               <font>
+                  <Font name="Garamond Bold" size="19.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="newAdventure1" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="newAdventureIntersted3" blendMode="MULTIPLY" layoutX="200.0" layoutY="346.0" mnemonicParsing="false" text="Not Intersted" textFill="#ee0000">
+               <font>
+                  <Font name="Garamond Bold" size="19.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="newAdventure3" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="newAdventureIntersted4" blendMode="MULTIPLY" layoutX="200.0" layoutY="274.0" mnemonicParsing="false" text="Not Intersted" textFill="#ee0000">
+               <font>
+                  <Font name="Garamond Bold" size="19.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="newAdventure4" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="newAdventureIntersted5" blendMode="MULTIPLY" layoutX="31.0" layoutY="346.0" mnemonicParsing="false" text="Intersted" textFill="#ee0000">
+               <font>
+                  <Font name="Garamond Bold" size="19.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="newAdventure5" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="newAdventureIntersted6" blendMode="MULTIPLY" layoutX="28.0" layoutY="274.0" mnemonicParsing="false" text="Intersted" textFill="#ee0000">
+               <font>
+                  <Font name="Garamond Bold" size="19.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="newAdventure6" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="newAdventureIntersted7" blendMode="MULTIPLY" layoutX="31.0" layoutY="436.0" mnemonicParsing="false" text="Intersted" textFill="#ee0000">
+               <font>
+                  <Font name="Garamond Bold" size="19.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="newAdventure7" />
+               </toggleGroup>
+            </RadioButton>
+            <Button blendMode="MULTIPLY" layoutX="26.0" layoutY="528.0" mnemonicParsing="false" onAction="#goNewUser1Page" prefHeight="50.0" prefWidth="361.0" text="Click for Your Next Destination! ">
+               <font>
+                  <Font name="Garamond Bold" size="23.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
