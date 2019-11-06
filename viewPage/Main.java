@@ -20,7 +20,8 @@ public class Main extends Application {
 	 private static BorderPane mainLayout;
 	
 	 /**
-	  * create the main stage for the entire application 
+	  * create the main stage for the entire application
+	  * 
 	  */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
