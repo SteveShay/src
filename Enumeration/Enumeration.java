@@ -35,6 +35,7 @@ public class Enumeration {
     public static final int TAX_UPPER_BOUND = 8;
     //User
     public static final int ARRAY_SIZE = 26;
+    public static final int CATEGORY_ARRAY_SIZE = 5;
     public static final String USER_FILEPATH = "src/UserFiles/";
     public static final String LOCATION_FILEPATH = "src/LocationFiles/";
     public static final String TXT = ".txt";

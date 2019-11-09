@@ -11,7 +11,12 @@ class BaseData {
     private String airportCode;
     private int zipCode;
 
-    public BaseData(String _name, int _zipCode, String _airportCode){
+    BaseData(String _name, int _zipCode){
+        this.name = _name;
+        this.zipCode = _zipCode;
+    }
+
+    BaseData(String _name, int _zipCode, String _airportCode){
         this.name = _name;
         this.zipCode = _zipCode;
         this.airportCode = _airportCode;
