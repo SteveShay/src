@@ -1,7 +1,7 @@
 package travelbucketlist;
 
 /**
- * Lasted Updated: 9/30/19
+ * Lasted Updated: 11/10/19
  * Project main class. Currently being used as a testing ground.
  * @authors Steve Shay
  */
@@ -14,6 +14,7 @@ import models.User;
 import static Enumeration.Enumeration.*;
 import api.APITranslator;
 import com.amadeus.exceptions.ResponseException;
+import java.util.Arrays;
 import models.CreateUserFromInput;
 import models.CreateVacationLocationFromInput;
 import models.RegisterUser;
@@ -50,6 +51,7 @@ public class TravelBucketList {
 
         try{
             double cost = APITranslator.getExpectedFlightCost(JamesTest.getAirportCode(), NYC.getAirportCode(), "2019-12-22");
+
             System.out.format("response: %.2f", cost);
             System.out.println("");
         }
@@ -93,6 +95,5 @@ public class TravelBucketList {
         catch(Exception e){
             System.out.println("error");
         }
-
     }
 }

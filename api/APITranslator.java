@@ -5,6 +5,7 @@ import models.User;
 import models.VacationLocation;
 
 /**
+ * Lasted Updated: 11/10/19
  * Connects standard methods to the API currently in use.
  * @author Steve
  */
@@ -13,9 +14,9 @@ public class APITranslator {
     private static final int DEV = 2;
 
 
-    private static final int currentFlightAPI = DEV;
-    private static final int currentHotelAPI = DEV;
-    private static final int currentAirportAPI = DEV;
+    private static final int currentFlightAPI = AMADEUS;
+    private static final int currentHotelAPI = AMADEUS;
+    private static final int currentAirportAPI = AMADEUS;
 
     public static double getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException{
         switch(currentFlightAPI){
