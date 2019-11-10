@@ -13,4 +13,8 @@ public class DevAPI {
     static double getExpectedHotelCost(String _citycode){
         return 69.69;
     }
+    
+    static String getAirportCode (double _latitude, double _longitude){
+        return "GSO";
+    }
 }

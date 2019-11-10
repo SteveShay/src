@@ -39,5 +39,6 @@ public class Enumeration {
     public static final String USER_FILEPATH = "src/UserFiles/";
     public static final String LOCATION_FILEPATH = "src/LocationFiles/";
     public static final String TXT = ".txt";
+    
 
 }

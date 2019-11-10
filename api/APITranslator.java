@@ -13,9 +13,9 @@ public class APITranslator {
     private static final int DEV = 2;
 
 
-    private static final int currentFlightAPI = AMADEUS;
-    private static final int currentHotelAPI = AMADEUS;
-    private static final int currentAirportAPI = AMADEUS;
+    private static final int currentFlightAPI = DEV;
+    private static final int currentHotelAPI = DEV;
+    private static final int currentAirportAPI = DEV;
 
     public static double getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException{
         switch(currentFlightAPI){
@@ -43,6 +43,8 @@ public class APITranslator {
         switch (currentAirportAPI){
             case 1:
                 return AmadeusAPI.getAirportCode(_latitude, _longitude);
+            case 2:
+                return DevAPI.getAirportCode(_latitude, _longitude);
             default:
                 System.out.println("No Airport API selected");
                 throw new AssertionError();

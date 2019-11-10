@@ -16,6 +16,7 @@ import api.APITranslator;
 import com.amadeus.exceptions.ResponseException;
 import models.CreateUserFromInput;
 import models.CreateVacationLocationFromInput;
+import models.RegisterUser;
 
 public class TravelBucketList {
 
@@ -39,6 +40,7 @@ public class TravelBucketList {
         //Test loading user from file.
         String userFileData = DatabaseTranslator.getUserData("James Bond");
         String[] userData = userFileData.split(INPUT_SPLIT);
+
         String locationFileData = DatabaseTranslator.getLocationData("New York City");
         String[] locationData = locationFileData.split(INPUT_SPLIT);
 
@@ -67,5 +69,30 @@ public class TravelBucketList {
 
         String aircode = APITranslator.getAirportCode(latAndLong[0], latAndLong[1]);
         System.out.println("Walkertown: " + aircode);
+
+        User newUser = RegisterUser.newUser("Dans Gaming", 27051);
+        System.out.println(newUser.getName() + ", " + newUser.getZipCode() + ", " + newUser.getAirportCode());
+        RegisterUser.storeUser(newUser.getName(), newUser.getZipCode(), newUser.getAirportCode(), newUser.getCategories(), newUser.getUserResponses());
+
+        int selection = JamesTest.selectRandomDestination();
+        System.out.println(selection);
+
+        String locationFileData1 = DatabaseTranslator.getLocationData("Location" + selection);
+        String[] locationData1 = locationFileData1.split(INPUT_SPLIT);
+
+        VacationLocation testLocation = CreateVacationLocationFromInput.createLocation(locationData1);
+        System.out.println(testLocation.getName());
+        System.out.println("");
+        System.out.println("");
+
+        try{
+            double cost = APITranslator.getExpectedFlightCost(JamesTest.getAirportCode(), testLocation.getAirportCode(), "2019-12-22");
+            System.out.format("response: %.2f", cost);
+            System.out.println("");
+        }
+        catch(Exception e){
+            System.out.println("error");
+        }
+
     }
 }
