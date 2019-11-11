@@ -1,9 +1,10 @@
 package models;
 
 import static Enumeration.Enumeration.*;
+import java.util.Arrays;
 
 /**
- * Lasted Updated: 9/30/19
+ * Lasted Updated: 11/10/19
  * Class to split input string into individual pieces and create a user object.
  * @authors Steve Shay
  */
@@ -15,15 +16,18 @@ public class CreateUserFromInput {
         String airport = _input[DATA_ARRAY_AIRPORT];
         String response = _input[DATA_ARRAY_RESPONSES];
         String[] stringResponses = response.split(RESPONSE_SPLIT);
-        int[] intResponses = parseResponses(stringResponses);
+        int[] intResponses = parseResponses(stringResponses, RESPONSE_ARRAY_SIZE);
+        String categories = _input[DATA_ARRAY_CATAGORIES];
+        String[] stringCategories = categories.split(RESPONSE_SPLIT);
+        int[] intCategories = parseResponses(stringCategories, CATEGORY_ARRAY_SIZE);
 
-        return new User(name, zip, airport, intResponses);
+        return new User(name, zip, airport, intCategories, intResponses);
     }
 
-    private static int[] parseResponses(String[] _responseInput){
-        int[] intResponses = new int[ARRAY_SIZE];
+    private static int[] parseResponses(String[] _responseInput, int _size){
+        int[] intResponses = new int[_size];
 
-        for (int i = ARRAY_START; i < ARRAY_SIZE; i++){
+        for (int i = ARRAY_START; i < _size; i++){
             intResponses[i] = Integer.parseInt(_responseInput[i]);
         }
         return intResponses;

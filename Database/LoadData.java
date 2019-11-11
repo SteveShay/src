@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Lasted Updated: 9/26/19
+ * Lasted Updated: 11/10/19
  * Loads user data from text file and separates it into individual parts.
  * @authors Steve Shay
  */

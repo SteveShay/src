@@ -2,7 +2,7 @@ package models;
 
 import static Enumeration.Enumeration.*;
 /**
- * Last Updated: 9/30/19
+ * Last Updated: 11/10/19
  * Class to split input string into individual pieces and create a VLocation object.
  * @author Steve
  */

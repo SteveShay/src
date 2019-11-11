@@ -5,6 +5,7 @@ import models.User;
 import models.VacationLocation;
 
 /**
+ * Lasted Updated: 11/10/19
  * Connects standard methods to the API currently in use.
  * @author Steve
  */
@@ -43,6 +44,8 @@ public class APITranslator {
         switch (currentAirportAPI){
             case 1:
                 return AmadeusAPI.getAirportCode(_latitude, _longitude);
+            case 2:
+                return DevAPI.getAirportCode(_latitude, _longitude);
             default:
                 System.out.println("No Airport API selected");
                 throw new AssertionError();
