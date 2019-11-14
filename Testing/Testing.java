@@ -1,20 +1,18 @@
 package Testing;
 
+import api.APITranslator;
 import com.amadeus.exceptions.ResponseException;
+import java.io.IOException;
 
 /**
  *
  * @author Steve Shay
  */
 public class Testing {
-    public static void main(String[] args) throws ResponseException{
+    public static void main(String[] args) throws ResponseException, IOException{
         //api.apiPrototype.getExpectedFlightCost("GSO", "JFK", "2019-12-22");
-        apiPrototype.getExpectedHotelCost("NYC");
-
-
-
-
-
+        //apiPrototype.getExpectedHotelCost("NYC");
+        System.out.println(APITranslator.getExpectedHotelCost("HNL"));
 
         /*OLD TESTS
         System.out.println("");

@@ -1,8 +1,8 @@
 package api;
 
 import com.amadeus.exceptions.ResponseException;
-import models.User;
-import models.VacationLocation;
+import java.io.IOException;
+
 
 /**
  * Lasted Updated: 11/10/19
@@ -14,12 +14,12 @@ public class APITranslator {
     private static final int DEV = 2;
 
 
-    private static final int currentFlightAPI = AMADEUS;
-    private static final int currentHotelAPI = AMADEUS;
-    private static final int currentAirportAPI = AMADEUS;
+    private static final int CURRENT_FLIGHT_API = DEV;
+    private static final int CURRENT_HOTEL_API = DEV;
+    private static final int CURRENT_AIRPORT_API = AMADEUS;
 
-    public static double getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException{
-        switch(currentFlightAPI){
+    public static double getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException, IOException{
+        switch(CURRENT_FLIGHT_API){
             case 1:
                 return AmadeusAPI.getExpectedFlightCost(_originAirport, _destinationAirport, _departureDate);
             case 2:
@@ -30,13 +30,13 @@ public class APITranslator {
         }
     }
 
-    public static double falloverFlightAPI (String _originAirport, String _destinationAirport, String _departureDate){
-        System.out.println("No Flights Found.");
+    public static double falloverFlightAPI (String _originAirport, String _destinationAirport, String _departureDate) throws IOException{
+        System.out.println("No Flights Found. Using Dev estimates.");
         return DevAPI.getExpectedFlightCost(_originAirport, _destinationAirport, _departureDate);
     }
 
-    public static double getExpectedHotelCost (String _citycode) throws ResponseException{
-        switch (currentHotelAPI){
+    public static double getExpectedHotelCost (String _citycode) throws ResponseException, IOException{
+        switch (CURRENT_HOTEL_API){
             case 1:
                 return AmadeusAPI.getExpectedHotelCost(_citycode);
             case 2:
@@ -46,13 +46,13 @@ public class APITranslator {
         }
     }
 
-    public static double falloverHotelAPI (String _cityCode){
+    public static double falloverHotelAPI (String _cityCode) throws IOException{
         System.out.println("No Hotels Found.");
         return DevAPI.getExpectedHotelCost(_cityCode);
     }
 
     public static String getAirportCode (double _latitude, double _longitude) throws ResponseException{
-        switch (currentAirportAPI){
+        switch (CURRENT_AIRPORT_API){
             case 1:
                 return AmadeusAPI.getAirportCode(_latitude, _longitude);
             case 2:

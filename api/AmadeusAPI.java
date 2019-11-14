@@ -14,16 +14,14 @@ import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightOffer;
 import com.amadeus.resources.HotelOffer;
 import com.amadeus.resources.Location;
+import java.io.IOException;
 
 public class AmadeusAPI {
+    static final Amadeus amadeus = Amadeus.builder(AMADEUS_ID, AMADEUS_SECRET).build();
 
-    static double getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException {
+    static double getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException, IOException {
         double total = 0;
         int count = 1;
-
-        Amadeus amadeus = Amadeus
-            .builder(AMADEUS_ID, AMADEUS_SECRET)
-            .build();
 
         FlightOffer[] flightOffers = amadeus.shopping.flightOffers.get(Params
             .with(ORIGIN, _originAirport)
@@ -47,34 +45,44 @@ public class AmadeusAPI {
         }
 
         System.out.println("Flight Total: " + total/count);
-        return total/3;
+        return total/count;
     }
 
-    static double getExpectedHotelCost(String _citycode) throws ResponseException{
+    static double getExpectedHotelCost(String _citycode) throws ResponseException, IOException{
         double total = 0;
         int count = 1;
+        HotelOffer[] offers;
 
-        Amadeus amadeus = Amadeus
-            .builder(AMADEUS_ID, AMADEUS_SECRET)
-            .build();
+        //Try for API response of hotel offers in destination city
+        try{
+            offers = amadeus.shopping.hotelOffers.get(Params.with("cityCode", _citycode));
+        }
+        //If there is no response fallover to Dev estimates.
+        catch(Exception e){
+            return APITranslator.falloverHotelAPI(_citycode);
+        }
 
-        HotelOffer[] offers = amadeus.shopping.hotelOffers.get(Params.with("cityCode", _citycode));
-        try {
+        //If the first value can't be added to the total fallover to the Dev estimates.
+        try{
             total += Double.parseDouble(offers[0].getOffers()[0].getPrice().getTotal());
         }
         catch(Exception e){
             return APITranslator.falloverHotelAPI(_citycode);
         }
+
+        //Try to add more offers from the API results to the total.
         try{
-            for (int i = 1; i < 5; i++) {
+            for (int i = 1; i < 3; i++) {
                 total += Double.parseDouble(offers[i].getOffers()[0].getPrice().getTotal());
                 count++;
             }
         }
+        //If there aren't 5 results log in output how many were used in the average.
         catch(Exception e){
             System.out.println("Only " + count + " hotel offer(s).");
         }
 
+        //Return the averace price by dividing total by count of prices added.
         return total/count;
     }
 
@@ -88,7 +96,7 @@ public class AmadeusAPI {
         return locations[0].getIataCode();
     }
 
-    //Depricated code
+    //Depricated code from before JSON parsing.
     /*public static double findFlightAverage (String _apiResponse, String _splitType){
         String[] values = _apiResponse.split(_splitType);
         double totalPricing = 0;

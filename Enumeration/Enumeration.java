@@ -39,6 +39,8 @@ public class Enumeration {
     public static final int CATEGORY_ARRAY_SIZE = 5;
     public static final String USER_FILEPATH = "src/UserFiles/";
     public static final String LOCATION_FILEPATH = "src/LocationFiles/";
+    public static final String HOTEL_RANGE_FILEPATH = "src/LocationFiles/DevHotelPriceRanges.txt";
+    public static final String FLIGHT_RANGE_FILEPATH = "src/LocationFiles/DevFlightPriceRanges.txt";
     public static final String TXT = ".txt";
     
 

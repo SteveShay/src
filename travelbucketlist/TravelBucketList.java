@@ -88,11 +88,11 @@ public class TravelBucketList {
         System.out.println("");
         System.out.println("");
 
-        
+
         double cost1 = APITranslator.getExpectedFlightCost(JamesTest.getAirportCode(), testLocation.getAirportCode(), "2019-12-22");
         System.out.format("Flight Total: %.2f", cost1);
         System.out.println("");
-        
+
         double hotelPrice1 = APITranslator.getExpectedHotelCost(testLocation.getCityCode());
         System.out.format("Hotel (Cost per night): %.2f", hotelPrice1);
 

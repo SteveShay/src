@@ -41,14 +41,12 @@ public class TestingClass {
         System.out.println("Test 3 Edge Case (1 True)   : " + blackboxTesting(test3, correct3));
         System.out.println("Test 4 Normal Case (14 True): " + blackboxTesting(test4, correct4));
         System.out.println("Test 5 Normal Case (12 True): " + blackboxTesting(test5, correct5));
-
-
-
     }
+
     private static String blackboxTesting (User _user, ArrayList _correct){
         int count = 0;
         int pass = 0;
-        
+
         if (_correct.contains(0)){
             return "Failed as expected. Real users who select no travel options are assigned 5 random locations.";
         }
@@ -67,5 +65,4 @@ public class TestingClass {
             return "Fail";
         }
     }
-
 }
