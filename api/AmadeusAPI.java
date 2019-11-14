@@ -19,6 +19,7 @@ public class AmadeusAPI {
 
     static double getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException {
         double total = 0;
+        int count = 1;
 
         Amadeus amadeus = Amadeus
             .builder(AMADEUS_ID, AMADEUS_SECRET)
@@ -28,30 +29,55 @@ public class AmadeusAPI {
             .with(ORIGIN, _originAirport)
             .and(DESTINATION, _destinationAirport)
             .and(DEPARTURE_DATE, _departureDate));
-
-        for (int i = 0; i < 3; i++) {
-            total += flightOffers[i].getOfferItems()[0].getPrice().getTotal();
+        
+        try {
+            total += flightOffers[0].getOfferItems()[0].getPrice().getTotal();
+        }
+        catch(Exception e){
+            return APITranslator.falloverFlightAPI(_originAirport, _destinationAirport, _departureDate);
+        }
+        try{
+            for (int i = 1; i < 5; i++) {
+                total += flightOffers[i].getOfferItems()[0].getPrice().getTotal();
+                count++;
+            }
+        }
+        catch(Exception e){
+            System.out.println("Only " + count + " hotel offer(s).");
         }
 
-        System.out.println("Flight Total: " + total/3);
+        System.out.println("Flight Total: " + total/count);
         return total/3;
     }
 
     static double getExpectedHotelCost(String _citycode) throws ResponseException{
         double total = 0;
+        int count = 1;
 
         Amadeus amadeus = Amadeus
             .builder(AMADEUS_ID, AMADEUS_SECRET)
             .build();
 
         HotelOffer[] offers = amadeus.shopping.hotelOffers.get(Params.with("cityCode", _citycode));
-        for (int i = 0; i < 3; i++) {
-            total += Double.parseDouble(offers[i].getOffers()[0].getPrice().getTotal());
+        try {
+            total += Double.parseDouble(offers[0].getOffers()[0].getPrice().getTotal());
         }
-        System.out.println("Hotel Total: " + total/3);
-        return total/3;
+        catch(Exception e){
+            return APITranslator.falloverHotelAPI(_citycode);
+        }
+        try{
+            for (int i = 1; i < 5; i++) {
+                total += Double.parseDouble(offers[i].getOffers()[0].getPrice().getTotal());
+                count++;
+            }
+        }
+        catch(Exception e){
+            System.out.println("Only " + count + " hotel offer(s).");
+        }
+
+        return total/count;
     }
-    
+
     static String getAirportCode(double _latitude, double _longitude) throws ResponseException{
         Amadeus amadeus = Amadeus
             .builder(AMADEUS_ID, AMADEUS_SECRET)

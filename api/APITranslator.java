@@ -29,6 +29,12 @@ public class APITranslator {
                 throw new AssertionError();
         }
     }
+
+    public static double falloverFlightAPI (String _originAirport, String _destinationAirport, String _departureDate){
+        System.out.println("No Flights Found.");
+        return DevAPI.getExpectedFlightCost(_originAirport, _destinationAirport, _departureDate);
+    }
+
     public static double getExpectedHotelCost (String _citycode) throws ResponseException{
         switch (currentHotelAPI){
             case 1:
@@ -38,6 +44,11 @@ public class APITranslator {
             default:
                 throw new AssertionError();
         }
+    }
+
+    public static double falloverHotelAPI (String _cityCode){
+        System.out.println("No Hotels Found.");
+        return DevAPI.getExpectedHotelCost(_cityCode);
     }
 
     public static String getAirportCode (double _latitude, double _longitude) throws ResponseException{

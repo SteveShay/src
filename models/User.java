@@ -35,13 +35,13 @@ public class User extends BaseData {
         countTrues();
         int count = 0;
         int returnIndex = 0;
-        int max = userResponses[25];
+        int max = this.userResponses[25];
+        int selection;
 
         Random r = new Random();
-        int selection = r.nextInt((max)) + 1;
-        System.out.println(selection);
+        selection = r.nextInt((max)) + 1;
 
-        for (int i : userResponses){
+        for (int i : this.userResponses){
             if (count < selection){
                 if (i == TRUE){
                     count++;
@@ -51,32 +51,36 @@ public class User extends BaseData {
         }
         return returnIndex;
     }
+    
+    public void checkResponseValid(){
+        
+    }
 
     private void countTrues(){
         int count = 0;
-        for (int i: userResponses){
-            if (i == TRUE){
+        for (int i = 0; i < this.userResponses.length - 2; i++){
+            if (this.userResponses[i] == TRUE){
                 count ++;
             }
         }
-        userResponses[25] = count;
+        this.userResponses[25] = count;
     }
 
     //======================== GETTERS ========================
     public int[] getUserResponses() {
-        return userResponses;
+        return this.userResponses;
     }
 
     public int getSingleResponse(int _index){
-        return userResponses[_index];
+        return this.userResponses[_index];
     }
 
     public int[] getCategories(){
-        return categoryResponses;
+        return this.categoryResponses;
     }
 
     public int getSingleCategory(int _index){
-        return categoryResponses[_index];
+        return this.categoryResponses[_index];
     }
 
     //======================== SETTERS ========================

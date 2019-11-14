@@ -52,7 +52,7 @@ public class TravelBucketList {
         try{
             double cost = APITranslator.getExpectedFlightCost(JamesTest.getAirportCode(), NYC.getAirportCode(), "2019-12-22");
 
-            System.out.format("response: %.2f", cost);
+            System.out.format("Flight Total: %.2f", cost);
             System.out.println("");
         }
         catch(Exception e){
@@ -62,7 +62,7 @@ public class TravelBucketList {
         System.out.println("");
 
         double hotelPrice = APITranslator.getExpectedHotelCost("NYC");
-        System.out.format("response: %.2f", hotelPrice);
+        System.out.format("Hotel (Cost per night): %.2f", hotelPrice);
         System.out.println("");
 
         double[] latAndLong = DatabaseTranslator.getLocationFromZip(JamesTest.getZipCode());
@@ -84,16 +84,17 @@ public class TravelBucketList {
 
         VacationLocation testLocation = CreateVacationLocationFromInput.createLocation(locationData1);
         System.out.println(testLocation.getName());
+        System.out.println(testLocation.getCityCode());
         System.out.println("");
         System.out.println("");
 
-        try{
-            double cost = APITranslator.getExpectedFlightCost(JamesTest.getAirportCode(), testLocation.getAirportCode(), "2019-12-22");
-            System.out.format("response: %.2f", cost);
-            System.out.println("");
-        }
-        catch(Exception e){
-            System.out.println("error");
-        }
+        
+        double cost1 = APITranslator.getExpectedFlightCost(JamesTest.getAirportCode(), testLocation.getAirportCode(), "2019-12-22");
+        System.out.format("Flight Total: %.2f", cost1);
+        System.out.println("");
+        
+        double hotelPrice1 = APITranslator.getExpectedHotelCost(testLocation.getCityCode());
+        System.out.format("Hotel (Cost per night): %.2f", hotelPrice1);
+
     }
 }
