@@ -29,7 +29,7 @@ public class AmadeusAPI {
             .with(ORIGIN, _originAirport)
             .and(DESTINATION, _destinationAirport)
             .and(DEPARTURE_DATE, _departureDate));
-        
+
         try {
             total += flightOffers[0].getOfferItems()[0].getPrice().getTotal();
         }
