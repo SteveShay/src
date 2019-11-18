@@ -14,6 +14,9 @@ import models.User;
 import models.VacationLocation;
 
 public class apiPrototype {
+    public static final String AMADEUS_ID = "L32XhR5nGjRdV3KiGCT58c90NoZ7YAk5";
+    public static final String AMADEUS_SECRET = "W1AWTYJzWte788dg";
+    
     public static void getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException {
         Amadeus amadeus = Amadeus
             .builder(AMADEUS_ID, AMADEUS_SECRET)

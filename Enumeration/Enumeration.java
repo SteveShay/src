@@ -1,7 +1,7 @@
 package Enumeration;
 
 /**
- * Lasted Updated: 11/10/19
+ * Lasted Updated: 11/18/19
  * Class for Storing 'most' enumeration variables used project wide.
  * @authors Steve Shay
  */
@@ -10,8 +10,6 @@ public class Enumeration {
     public static final int TRUE = 1;
     public static final int FALSE = 0;
     //Amadeus API string inputs.
-    public static final String AMADEUS_ID = "L32XhR5nGjRdV3KiGCT58c90NoZ7YAk5";
-    public static final String AMADEUS_SECRET = "W1AWTYJzWte788dg";
     public static final String ORIGIN = "origin";
     public static final String DESTINATION = "destination";
     public static final String DEPARTURE_DATE = "departureDate";
@@ -35,6 +33,7 @@ public class Enumeration {
     public static final int SUB_LOWER_BOUND = 3;
     public static final int TAX_UPPER_BOUND = 8;
     //User
+    public static final int NUMBER_OF_LOCATIONS = 25;
     public static final int RESPONSE_ARRAY_SIZE = 26;
     public static final int CATEGORY_ARRAY_SIZE = 5;
     public static final String USER_FILEPATH = "src/UserFiles/";
@@ -42,6 +41,4 @@ public class Enumeration {
     public static final String HOTEL_RANGE_FILEPATH = "src/LocationFiles/DevHotelPriceRanges.txt";
     public static final String FLIGHT_RANGE_FILEPATH = "src/LocationFiles/DevFlightPriceRanges.txt";
     public static final String TXT = ".txt";
-    
-
 }

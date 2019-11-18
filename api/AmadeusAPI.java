@@ -1,7 +1,7 @@
 package api;
 
 /**
- * Lasted Updated: 10/29/19
+ * Lasted Updated: 11/13/19
  * API translation prototypes which will eventually be transfered to the final API translators.
  * @authors Steve Shay
  */
@@ -17,6 +17,8 @@ import com.amadeus.resources.Location;
 import java.io.IOException;
 
 public class AmadeusAPI {
+    public static final String AMADEUS_ID = "L32XhR5nGjRdV3KiGCT58c90NoZ7YAk5";
+    public static final String AMADEUS_SECRET = "W1AWTYJzWte788dg";
     static final Amadeus amadeus = Amadeus.builder(AMADEUS_ID, AMADEUS_SECRET).build();
 
     static double getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException, IOException {
