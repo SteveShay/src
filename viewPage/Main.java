@@ -18,18 +18,18 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	 private static Stage primaryStage;
 	 private static BorderPane mainLayout;
-	
+
 	 /**
-	  * create the main stage for the entire application 
+	  * create the main stage for the entire application
 	  */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("American Traveller Bucketlist");
-		
-		showMainView();			
+
+		showMainView();
 	}
-	
+
 	/**
 	 * This method display using fxml loader and load the home page.
 	 */
@@ -41,11 +41,11 @@ public class Main extends Application {
 		Scene scene = new Scene(mainLayout);
 		//Construct a main layout for the Main home page
 		primaryStage.setScene(scene);
-		primaryStage.show();	
+		primaryStage.show();
 	}
-	
+
 	/**
-	 * This method display using fxml loader and load login page. 
+	 * This method display using fxml loader and load login page.
 	 */
 	public static void showLogin() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
@@ -53,7 +53,7 @@ public class Main extends Application {
 		BorderPane loginPage = loader.load();
 		mainLayout.setCenter(loginPage);
 	}
-	
+
 	/**
 	 * This method display using fxml loader and load register page.
 	 */
@@ -62,11 +62,11 @@ public class Main extends Application {
 		loader.setLocation(Main.class.getResource("register/RegistrationPageView.fxml"));
 		BorderPane registerPage = loader.load();
 		mainLayout.setCenter(registerPage);
-		
+
 	}
-	
+
 	/**
-	 * This method display using fxml loader and load about us page. 
+	 * This method display using fxml loader and load about us page.
 	 */
 	public static void showAboutUs() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
@@ -80,7 +80,7 @@ public class Main extends Application {
 		showAboutUsDialogStage.setScene(scene);
 		showAboutUsDialogStage.showAndWait();
 	}
-	
+
 	/**
 	 * This method display using fxml loader and load contact us page.
 	 */
@@ -90,7 +90,7 @@ public class Main extends Application {
 		BorderPane contactUs = loader.load();
 		mainLayout.setCenter(contactUs);
 	}
-	
+
     /**
 	 * This method display using fxml loader and load new user page.
 	 */
@@ -105,11 +105,11 @@ public class Main extends Application {
 		showNewUserFirstDialogStage.initOwner(primaryStage);
 		Scene scene = new Scene(newUser);
 		showNewUserFirstDialogStage.setScene(scene);
-		showNewUserFirstDialogStage.showAndWait();	
+		showNewUserFirstDialogStage.showAndWait();
 	}
-	
+
 	/**
-	 * This method display using fxml loader and new user page1  
+	 * This method display using fxml loader and new user page1
 	 */
 
 	public static void showNewUser1() throws IOException {
@@ -117,10 +117,10 @@ public class Main extends Application {
 		loader.setLocation(Main.class.getResource("reasonForTraveling/ReasonForTravelView.fxml"));
 		BorderPane newUser1 = loader.load();
 		mainLayout.setCenter(newUser1);
-		
+
 	}
-	
-	
+
+
 	public static void main(String[] args) {
 		launch(args);
 	}
