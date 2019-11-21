@@ -25,7 +25,7 @@ public class BlackboxTestingClass {
 
         //Set 2
         int[] test2Responses = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-        ArrayList<Integer> correct2 = new ArrayList<Integer>(Arrays.asList(0));
+        ArrayList<Integer> correct2 = new ArrayList<Integer>(Arrays.asList(-1));
         test2.setUserResponses(test2Responses);
 
         //Set 3
@@ -49,8 +49,6 @@ public class BlackboxTestingClass {
         System.out.println("Test 3 Edge Case (1 True)   : " + blackboxTesting(test3, correct3));
         System.out.println("Test 4 Normal Case (14 True): " + blackboxTesting(test4, correct4));
         System.out.println("Test 5 Normal Case (12 True): " + blackboxTesting(test5, correct5));
-        System.out.println("");
-        System.out.println("It is expected that test 2 should fail since the user creation process prevents users from selecting no locations to visit by selecting 5 random locations for them.");
     }
 
     private static String blackboxTesting (User _user, ArrayList _correct){

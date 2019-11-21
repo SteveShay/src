@@ -52,9 +52,13 @@ public class TravelBucketList {
 
         //Test selecting a random destination based on user responses.
         int selection = JamesTest.selectRandomDestination();
+        if (selection == -1){
+            System.out.println("You have visited all Locations on your list.");
+        }
         System.out.println(selection);
 
-        String locationFileData1 = DatabaseTranslator.getLocationData("Location" + selection);
+        String locationFileName = JamesTest.mapFilename(selection - 1);
+        String locationFileData1 = DatabaseTranslator.getLocationData(locationFileName);
         String[] locationData1 = locationFileData1.split(INPUT_SPLIT);
 
         //Print out the selection details.

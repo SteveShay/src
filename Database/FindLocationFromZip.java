@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 class FindLocationFromZip{
     static double[] getLatandLong(int _zip) throws FileNotFoundException, IOException{
-        String[] input = null;
+        String[] input;
         double[] result = new double[2];
         Boolean found = false;
 

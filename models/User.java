@@ -6,6 +6,11 @@ package models;
  * @authors Steve Shay
  */
 import static Enumeration.Enumeration.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Random;
 
 public class User extends BaseData {
@@ -47,6 +52,9 @@ public class User extends BaseData {
         //Pull number of true responses from the final index in the array.
         int max = this.userResponses[25];
         int selection;
+        if (max == 0){
+            return -1;
+        }
 
         //Select a random integer from 1 to the number of true responses. (inclusive)
         selection = r.nextInt((max)) + 1;
@@ -84,6 +92,27 @@ public class User extends BaseData {
                 }
             }
         }
+    }
+
+    public String mapFilename(int _index) throws FileNotFoundException, IOException{
+        String[] input;
+        String mappedLocationFilename = "";
+
+        String filepath = USER_FILEPATH + getName() + TXT;
+        File inputFile = new File(filepath);
+        BufferedReader br = new BufferedReader(new FileReader(inputFile));
+
+        br.readLine();
+        String str;
+        while ((str = br.readLine()) != null){
+            input = str.split("\t");
+            int intIndex = Integer.parseInt(input[0]);
+
+            if (_index == intIndex){
+                mappedLocationFilename = input[1];
+            }
+        }
+        return mappedLocationFilename;
     }
 
     //Loop through the entire array and update the final index with how many times they responded true.
