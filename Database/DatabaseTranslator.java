@@ -18,7 +18,17 @@ public class DatabaseTranslator {
     public static String getUserData(String _name) throws IOException{
         switch(CURRENTUSERDATA){
             case 1:
-                return LoadData.LoadFile(USER_FILEPATH, _name);
+                return LoadData.LoadUserData(USER_FILEPATH, _name);
+            default:
+                System.out.println("No database is selected");
+                throw new AssertionError();
+        }
+    }
+
+    public static String getUserLocations (String _name) throws IOException{
+        switch(CURRENTUSERDATA){
+            case 1:
+                return LoadData.LoadUserLocations(_name);
             default:
                 System.out.println("No database is selected");
                 throw new AssertionError();
@@ -28,7 +38,7 @@ public class DatabaseTranslator {
     public static String getLocationData(String _name) throws IOException{
         switch(CURRENTLOCATIONDATA){
             case 1:
-                return LoadData.LoadFile(LOCATION_FILEPATH, _name);
+                return LoadData.LoadUserData(LOCATION_FILEPATH, _name);
             default:
                 System.out.println("No database is selected");
                 throw new AssertionError();
@@ -41,6 +51,17 @@ public class DatabaseTranslator {
             case 1:
                 return FindLocationFromZip.getLatandLong(_zip);
             default:
+                throw new AssertionError();
+        }
+    }
+
+    public static void storeUserData(String _name, String _output) throws IOException{
+        switch (CURRENTUSERDATA) {
+            case 1:
+                StoreData.writeFile(_name, _output);
+                break;
+            default:
+                System.out.println("No database is selected");
                 throw new AssertionError();
         }
     }

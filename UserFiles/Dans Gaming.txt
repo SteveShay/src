@@ -1,26 +1,2 @@
-Dans Gaming	27051	CLT	0, 0, 0, 0, 0	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-0	Location1
-1	Location2
-2	Location3
-3	Location4
-4	Location5
-5	Location6
-6	Location7
-7	Location8
-8	Location9
-9	Location10
-10	Location11
-11	Location12
-12	Location13
-13	Location14
-14	Location15
-15	Location16
-16	Location17
-17	Location18
-18	Location19
-19	Location20
-20	Location21
-21	Location22
-22	Location23
-23	Location24
-24	Location25
+Dans Gaming	27051	CLT	0, 0, 0, 0, 0	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44
+0	Location11	Location22	Location33	Location44	Location55	Location66	Location77	Location88	Location99	Location1010	Location1111	Location1212	Location1313	Location1414	Location1515	Location1616	Location1717	Location1818	Location1919	Location2020	Location2121	Location2222	Location2323	Location2424	Location25

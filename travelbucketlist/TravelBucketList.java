@@ -20,7 +20,8 @@ import models.CreateVacationLocationFromInput;
 import models.RegisterUser;
 
 public class TravelBucketList {
-
+    static User currentUser1;
+    static User currentUser2;
     /**
      * @param args the command line arguments
      */
@@ -33,11 +34,11 @@ public class TravelBucketList {
         String[] locationData = locationFileData.split(INPUT_SPLIT);
 
         //Test User object data load and getters.
-        User JamesTest = CreateUserFromInput.createUser(userData);
+        currentUser1 = CreateUserFromInput.createUser(userData);
         VacationLocation NYC = CreateVacationLocationFromInput.createLocation(locationData);
 
         //Test zip to latitude and longitude conversion.
-        double[] latAndLong = DatabaseTranslator.getLocationFromZip(JamesTest.getZipCode());
+        double[] latAndLong = DatabaseTranslator.getLocationFromZip(currentUser1.getZipCode());
         System.out.println(latAndLong[0]);
         System.out.println(latAndLong[1]);
 
@@ -46,18 +47,20 @@ public class TravelBucketList {
         System.out.println("Walkertown: " + aircode);
 
         //Test registering a new user.
-        User newUser = RegisterUser.newUser("Dans Gaming", 27051);
-        System.out.println(newUser.getName() + ", " + newUser.getZipCode() + ", " + newUser.getAirportCode());
-        RegisterUser.storeUser(newUser.getName(), newUser.getZipCode(), newUser.getAirportCode(), newUser.getCategories(), newUser.getUserResponses());
+        currentUser2 = RegisterUser.newUser("Dans Gaming", 27051);
+        System.out.println(currentUser2.getName() + ", " + currentUser2.getZipCode() + ", " + currentUser2.getAirportCode());
+        RegisterUser.storeUser(currentUser2.getName(), currentUser2.getZipCode(), currentUser2.getAirportCode(), currentUser2.getCategories(), currentUser2.getUserResponses());
+        currentUser2.setSingleResponse(25, 44);
+        currentUser2.overwriteUser();
 
         //Test selecting a random destination based on user responses.
-        int selection = JamesTest.selectRandomDestination();
+        int selection = currentUser1.selectRandomDestination();
         if (selection == -1){
             System.out.println("You have visited all Locations on your list.");
         }
         System.out.println(selection);
 
-        String locationFileName = JamesTest.mapFilename(selection - 1);
+        String locationFileName = currentUser1.mapFilename(selection - 1);
         String locationFileData1 = DatabaseTranslator.getLocationData(locationFileName);
         String[] locationData1 = locationFileData1.split(INPUT_SPLIT);
 
@@ -69,7 +72,7 @@ public class TravelBucketList {
         System.out.println("");
 
         //Get the projected flight and hotel costs for the selected trip.
-        double cost1 = APITranslator.getExpectedFlightCost(JamesTest.getAirportCode(), testLocation.getAirportCode(), "2019-12-22");
+        double cost1 = APITranslator.getExpectedFlightCost(currentUser1.getAirportCode(), testLocation.getAirportCode(), "2019-12-22");
         System.out.format("Flight Total: %.2f", cost1);
         System.out.println("");
 

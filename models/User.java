@@ -5,12 +5,14 @@ package models;
  * User specific data which expands on the base data set.
  * @authors Steve Shay
  */
+import Database.DatabaseTranslator;
 import static Enumeration.Enumeration.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Random;
 
 public class User extends BaseData {
@@ -94,6 +96,12 @@ public class User extends BaseData {
         }
     }
 
+    public void overwriteUser () throws IOException{
+        String output = toString();
+        output += DatabaseTranslator.getUserLocations(getName());
+        DatabaseTranslator.storeUserData(getName(), output);
+    }
+
     public String mapFilename(int _index) throws FileNotFoundException, IOException{
         String[] input;
         String mappedLocationFilename = "";
@@ -113,6 +121,14 @@ public class User extends BaseData {
             }
         }
         return mappedLocationFilename;
+    }
+
+    @Override
+    public String toString(){
+        String catagories = Arrays.toString(getCategories());
+        String responses = Arrays.toString(getUserResponses());
+        String output = getName() + INPUT_SPLIT + getZipCode() + INPUT_SPLIT + getAirportCode() + INPUT_SPLIT + catagories.substring(1, catagories.length() - 1) + INPUT_SPLIT + responses.substring(1, responses.length() - 1) + "\n";
+        return output;
     }
 
     //Loop through the entire array and update the final index with how many times they responded true.

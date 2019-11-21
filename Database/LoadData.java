@@ -13,7 +13,7 @@ import java.io.IOException;
  * @authors Steve Shay
  */
 public class LoadData {
-    static String LoadFile (String _FilepathStub, String _name) throws FileNotFoundException, IOException{
+    static String LoadUserData (String _FilepathStub, String _name) throws FileNotFoundException, IOException{
         String filepath = _FilepathStub + _name + TXT;
         File inputFile = new File(filepath);
 
@@ -22,5 +22,20 @@ public class LoadData {
         String inputLine = br.readLine();
 
         return inputLine;
+    }
+
+    static String LoadUserLocations (String _name) throws FileNotFoundException, IOException{
+        String input = "";
+        String filepath = USER_FILEPATH + _name + TXT;
+        File inputFile = new File(filepath);
+
+        BufferedReader br = new BufferedReader(new FileReader(inputFile));
+        br.readLine();
+
+        String str;
+        while ((str = br.readLine()) != null){
+            input += str;
+        }
+        return input;
     }
 }
