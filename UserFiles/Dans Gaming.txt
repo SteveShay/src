@@ -1,2 +1,0 @@
-Dans Gaming	27051	CLT	0, 0, 0, 0, 0	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44
-0	Location11	Location22	Location33	Location44	Location55	Location66	Location77	Location88	Location99	Location1010	Location1111	Location1212	Location1313	Location1414	Location1515	Location1616	Location1717	Location1818	Location1919	Location2020	Location2121	Location2222	Location2323	Location2424	Location25

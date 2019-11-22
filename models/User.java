@@ -1,7 +1,7 @@
 package models;
 
 /**
- * Lasted Updated: 11/18/19
+ * Lasted Updated: 11/21/19
  * User specific data which expands on the base data set.
  * @authors Steve Shay
  */
@@ -74,7 +74,7 @@ public class User extends BaseData {
             }
         }
         //End by returning the 'returnIndex'.
-        return returnIndex;
+        return returnIndex - 1;
     }
 
     //Check to make sure the user didn't answer false to all locations.
@@ -106,7 +106,7 @@ public class User extends BaseData {
         String[] input;
         String mappedLocationFilename = "";
 
-        String filepath = USER_FILEPATH + getName() + TXT;
+        String filepath = USER_FILEPATH + getLowercaseName() + TXT;
         File inputFile = new File(filepath);
         BufferedReader br = new BufferedReader(new FileReader(inputFile));
 

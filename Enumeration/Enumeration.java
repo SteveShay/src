@@ -3,7 +3,7 @@ package Enumeration;
 /**
  * Lasted Updated: 11/20/19
  * Class for Storing 'most' enumeration variables used project wide.
- * @authors Steve Shay
+ * @authors Stephen Hampson
  */
 public class Enumeration {
     //Boolean values as integers.
@@ -13,6 +13,7 @@ public class Enumeration {
     public static final String ORIGIN = "origin";
     public static final String DESTINATION = "destination";
     public static final String DEPARTURE_DATE = "departureDate";
+    public static final String TEST_DATE = "2020-1-10";
     //Keywords for String splits.
     public static final String FLIGHT_SPLIT = "flight-offer";
     public static final String PRICE_SPLIT = "total";
@@ -36,7 +37,7 @@ public class Enumeration {
     public static final int NUMBER_OF_LOCATIONS = 25;
     public static final int RESPONSE_ARRAY_SIZE = 26;
     public static final int CATEGORY_ARRAY_SIZE = 5;
-    //Filename values
+    //Filepath/Filename values
     public static final String USER_FILEPATH = "src/UserFiles/";
     public static final String LOCATION_FILEPATH = "src/LocationFiles/";
     public static final String HOTEL_RANGE_FILEPATH = "src/LocationFiles/DevHotelPriceRanges.txt";

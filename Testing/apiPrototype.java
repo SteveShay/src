@@ -13,10 +13,15 @@ import com.amadeus.resources.Location;
 import models.User;
 import models.VacationLocation;
 
+/**
+ * The original API prototypes created to test and learn the ins and outs of the Amadeus API and its Java SDK.
+ * Further comments will not be provided.
+ * @author Steve Shay
+ */
 public class apiPrototype {
     public static final String AMADEUS_ID = "L32XhR5nGjRdV3KiGCT58c90NoZ7YAk5";
     public static final String AMADEUS_SECRET = "W1AWTYJzWte788dg";
-    
+
     public static void getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException {
         Amadeus amadeus = Amadeus
             .builder(AMADEUS_ID, AMADEUS_SECRET)
