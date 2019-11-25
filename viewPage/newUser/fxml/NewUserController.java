@@ -1,4 +1,4 @@
-package viewPage.fxml;
+package viewPage.NewUser.fxml;
 
 /**
  * This class manages the interaction between new user page and home page.

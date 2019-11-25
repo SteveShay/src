@@ -1,4 +1,4 @@
-package viewPage.fxml;
+package viewPage.Home.fxml;
 
 /**
  * This is the Home view controller for home page. It tracks the home buttons and the action handler
