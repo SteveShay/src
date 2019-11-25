@@ -5,15 +5,11 @@ import java.util.Arrays;
 import models.User;
 
 /**
- * Lasted Updated: 11/21/19
+ * Lasted Updated: 11/18/19
  * Tests the selectRandomDestination function from the user class.
- * @authors Stephen Hampson
+ * @authors Steve Shay
  */
 public class BlackboxTestingClass {
-    /**
-     * Creates the Blackbox testing variables then executes the tests.
-     * @param args
-     */
     public static void main(String[] args){
         //Create five dummy users to execute the five tests.
         User test1 = new User("test1", 11111);
@@ -22,29 +18,29 @@ public class BlackboxTestingClass {
         User test4 = new User("test4", 11111);
         User test5 = new User("test5", 11111);
 
-        //Set 1 (Edge case all locations are true)
+        //Set 1
         int[] test1Responses = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,25};
-        ArrayList<Integer> correct1 = new ArrayList<Integer>(Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24));
+        ArrayList<Integer> correct1 = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25));
         test1.setUserResponses(test1Responses);
 
-        //Set 2 (Edge/Error case all locations are false
+        //Set 2
         int[] test2Responses = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-        ArrayList<Integer> correct2 = new ArrayList<Integer>(Arrays.asList(-1));
+        ArrayList<Integer> correct2 = new ArrayList<Integer>(Arrays.asList(0));
         test2.setUserResponses(test2Responses);
 
-        //Set 3 (Normal/Edge case only one location is true)
+        //Set 3
         int[] test3Responses = {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
-        ArrayList<Integer> correct3 = new ArrayList<Integer>(Arrays.asList(9));
+        ArrayList<Integer> correct3 = new ArrayList<Integer>(Arrays.asList(10));
         test3.setUserResponses(test3Responses);
 
-        //Set 4 (Normal case random true values)
+        //Set 4
         int[] test4Responses = {1,1,1,0,0,1,0,0,0,1,1,0,1,0,1,1,0,0,1,1,0,1,0,1,1,14};
-        ArrayList<Integer> correct4 = new ArrayList<Integer>(Arrays.asList(0,1,2,5,9,10,12,14,15,18,19,21,23,24));
+        ArrayList<Integer> correct4 = new ArrayList<Integer>(Arrays.asList(1,2,3,6,10,11,13,15,16,19,20,22,24,25));
         test4.setUserResponses(test4Responses);
 
-        //Set 5 (Normal case random true values)
+        //Set 5
         int[] test5Responses = {0,1,1,1,0,0,1,1,0,1,1,0,1,1,1,1,0,0,0,0,1,0,0,0,0,12};
-        ArrayList<Integer> correct5 = new ArrayList<Integer>(Arrays.asList(1,2,3,6,7,9,10,12,13,14,15,20));
+        ArrayList<Integer> correct5 = new ArrayList<Integer>(Arrays.asList(2,3,4,7,8,10,11,13,14,15,16,21));
         test5.setUserResponses(test5Responses);
 
         //Run the tests.
@@ -53,15 +49,10 @@ public class BlackboxTestingClass {
         System.out.println("Test 3 Edge Case (1 True)   : " + blackboxTesting(test3, correct3));
         System.out.println("Test 4 Normal Case (14 True): " + blackboxTesting(test4, correct4));
         System.out.println("Test 5 Normal Case (12 True): " + blackboxTesting(test5, correct5));
+        System.out.println("");
+        System.out.println("It is expected that test 2 should fail since the user creation process prevents users from selecting no locations to visit by selecting 5 random locations for them.");
     }
 
-    /**
-     * Tests a given test case and returns a pass or fail value.
-     *
-     * @param _user The User object to be tested.
-     * @param _correct The array list of acceptable outputs used to evaluate pass/fail.
-     * @return If the selectRandomDestination() method passes more than 95% of tests return 'Pass', otherwise return 'Fail'
-     */
     private static String blackboxTesting (User _user, ArrayList _correct){
         //Keeps track of times the test is run.
         int count = 0;

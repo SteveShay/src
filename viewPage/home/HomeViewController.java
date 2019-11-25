@@ -1,4 +1,4 @@
-package viewPage.home;
+package viewPage.fxml;
 
 /**
  * This is the Home view controller for home page. It tracks the home buttons and the action handler
@@ -8,48 +8,45 @@ package viewPage.home;
  */
 import java.io.IOException;
 import javafx.fxml.FXML;
-import models.User;
 import viewPage.Main;
 
 public class HomeViewController {
-    public static User currentUser;
-
-	private Main main;
+	
 	/**
 	 * This handle the login button on the home page that direct the user to login page.
 	 * @throws IOException
 	 */
 	@FXML
 	private void goLoginPage() throws IOException {
-		main.showLogin();
+		Main.showLogin();
 	}
-
+	
 	/**
 	 * This handle the register button on the home page that direct the user to register page.
 	 * @throws IOException
 	 */
 	@FXML
 	private void goRegisterPage() throws IOException {
-		main.showRegister();
+		Main.showRegister();
 	}
-
+	
 	/**
 	 * This handle the About us  button on the home page that direct the user to about us page.
 	 * @throws IOException
 	 */
 	@FXML
 	private void goAboutUs() throws IOException {
-		main.showAboutUs();
+		Main.showAboutUs();
 	}
-
+	
 	/**
 	 * This handle the contact us button on the home page that direct the user to contact us page
 	 * @throws IOException
 	 */
 	@FXML
 	private void goContactUs() throws IOException {
-		main.showContactUs();
+		Main.showContactUs();
 	}
-
+	
 
 }

@@ -1,18 +1,11 @@
 package models;
 
 /**
- * Lasted Updated: 11/21/19
+ * Lasted Updated: 11/18/19
  * User specific data which expands on the base data set.
  * @authors Steve Shay
  */
-import Database.DatabaseTranslator;
 import static Enumeration.Enumeration.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.Random;
 
 public class User extends BaseData {
@@ -54,9 +47,6 @@ public class User extends BaseData {
         //Pull number of true responses from the final index in the array.
         int max = this.userResponses[25];
         int selection;
-        if (max == 0){
-            return -1;
-        }
 
         //Select a random integer from 1 to the number of true responses. (inclusive)
         selection = r.nextInt((max)) + 1;
@@ -74,7 +64,7 @@ public class User extends BaseData {
             }
         }
         //End by returning the 'returnIndex'.
-        return returnIndex - 1;
+        return returnIndex;
     }
 
     //Check to make sure the user didn't answer false to all locations.
@@ -94,41 +84,6 @@ public class User extends BaseData {
                 }
             }
         }
-    }
-
-    public void overwriteUser () throws IOException{
-        String output = toString();
-        output += DatabaseTranslator.getUserLocations(getName());
-        DatabaseTranslator.storeUserData(getName(), output);
-    }
-
-    public String mapFilename(int _index) throws FileNotFoundException, IOException{
-        String[] input;
-        String mappedLocationFilename = "";
-
-        String filepath = USER_FILEPATH + getLowercaseName() + TXT;
-        File inputFile = new File(filepath);
-        BufferedReader br = new BufferedReader(new FileReader(inputFile));
-
-        br.readLine();
-        String str;
-        while ((str = br.readLine()) != null){
-            input = str.split("\t");
-            int intIndex = Integer.parseInt(input[0]);
-
-            if (_index == intIndex){
-                mappedLocationFilename = input[1];
-            }
-        }
-        return mappedLocationFilename;
-    }
-
-    @Override
-    public String toString(){
-        String catagories = Arrays.toString(getCategories());
-        String responses = Arrays.toString(getUserResponses());
-        String output = getName() + INPUT_SPLIT + getZipCode() + INPUT_SPLIT + getAirportCode() + INPUT_SPLIT + catagories.substring(1, catagories.length() - 1) + INPUT_SPLIT + responses.substring(1, responses.length() - 1) + "\n";
-        return output;
     }
 
     //Loop through the entire array and update the final index with how many times they responded true.

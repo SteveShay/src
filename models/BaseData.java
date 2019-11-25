@@ -1,7 +1,7 @@
 package models;
 
 /**
- * Lasted Updated: 11/21/19
+ * Lasted Updated: 9/25/19
  * Base data used by both users and locations.
  * @authors Steve Shay
  */
@@ -25,11 +25,6 @@ class BaseData {
     //======================== GETTERS ========================
     public String getName() {
         return this.name;
-    }
-
-    public String getLowercaseName() {
-        String lowercaseName = getName().toLowerCase();
-        return lowercaseName.replaceAll("\\s","");
     }
 
     public String getAirportCode() {

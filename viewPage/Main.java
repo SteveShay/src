@@ -2,7 +2,7 @@ package viewPage;
 
 /**
  * This is a loader page over main pane that display most the pages.
- * Last Updated: 11/04/2019
+ * Last Updated: 11/25/19
  * @author Reagan Berhe
  */
 
@@ -12,116 +12,101 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 	 private static Stage primaryStage;
 	 private static BorderPane mainLayout;
+	 private static final String HOMEPAGE_PATH = "Home/fxml/HomePageView.fxml";
+	 private static final String LOGINPAGE_PATH = "Login/fxml/LoginPageView.fxml";
+	 private static final String REGISTERPAGE_PATH = "Regster/fxml/RegistrationPageView.fxml";
+	 private static final String ABOUTUSPAGE_PATH = "Home/fxml/AboutUsView.fxml";
+	 private static final String COTNTACTUS_PATH = "Home/fxml/ContactUsView.fxml";
+	 private static final String CATAGORY1_PATH = "NewUser/fxml/NewUserView.fxml";
+	 private static final String CATAGORY2_PATH = "NewUser/fxml/NewUserView2.fxml";
+	 private static final String CATAGORY3_PATH = "OtherNewUser/fxml/OthersNewUserView.fxml";
+	 private static final String SHOWLIST_PATH = "ShowList/fxml/ShowListView.fxml";
+
 
 	 /**
-	  * create the main stage for the entire application
+	  * This Method Create the main Stage for all pages.
+	  *
 	  */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("American Traveller Bucketlist");
+		Main.primaryStage = primaryStage;
+		Main.primaryStage.setTitle("American Traveller Bucketlist");
 
 		showMainView();
 	}
 
 	/**
-	 * This method display using fxml loader and load the home page.
+	 * This method display using FXML loader method for Scene.
+	 * @throws IOException
 	 */
-	public static void showMainView() throws IOException {
+	public static void FxmlLoader(String _fxmlFilePath) throws IOException {
+
 		FXMLLoader loader = new FXMLLoader();
 		//Construct a FXML loader for the home page.
-		loader.setLocation(Main.class.getResource("home/HomePageView.fxml"));
+		loader.setLocation(Main.class.getResource(_fxmlFilePath));
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		//Construct a main layout for the Main home page
 		primaryStage.setScene(scene);
+	}
+	public static void showMainView() throws IOException {
+		Main.FxmlLoader(HOMEPAGE_PATH);
 		primaryStage.show();
 	}
 
-	/**
-	 * This method display using fxml loader and load login page.
-	 */
 	public static void showLogin() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("login/LoginPageView.fxml"));
-		BorderPane loginPage = loader.load();
-		mainLayout.setCenter(loginPage);
+		Main.FxmlLoader(LOGINPAGE_PATH);
 	}
 
-	/**
-	 * This method display using fxml loader and load register page.
-	 */
-	public static void showRegister() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("register/RegistrationPageView.fxml"));
-		BorderPane registerPage = loader.load();
-		mainLayout.setCenter(registerPage);
 
+	public static void showRegister() throws IOException {
+		Main.FxmlLoader(REGISTERPAGE_PATH);
 	}
 
 	/**
 	 * This method display using fxml loader and load about us page.
 	 */
 	public static void showAboutUs() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("aboutUs/AboutUsView.fxml"));
-		BorderPane aboutUs = loader.load();
-		Stage showAboutUsDialogStage = new Stage();
-		showAboutUsDialogStage.setTitle("Register Here! ");
-		showAboutUsDialogStage.initModality(Modality.WINDOW_MODAL);
-		showAboutUsDialogStage.initOwner(primaryStage);
-		Scene scene = new Scene(aboutUs);
-		showAboutUsDialogStage.setScene(scene);
-		showAboutUsDialogStage.showAndWait();
+		Main.FxmlLoader(ABOUTUSPAGE_PATH);
 	}
 
 	/**
 	 * This method display using fxml loader and load contact us page.
 	 */
 	public static void showContactUs() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("contactUs/ContactUsView.fxml"));
-		BorderPane contactUs = loader.load();
-		mainLayout.setCenter(contactUs);
+		Main.FxmlLoader(COTNTACTUS_PATH);
 	}
 
     /**
 	 * This method display using fxml loader and load new user page.
 	 */
 	public static void showNewUser() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("newUser/NewUserView.fxml"));
-		BorderPane newUser = loader.load();
-		//this section here display the new user as a dialog box
-		Stage showNewUserFirstDialogStage = new Stage();
-		showNewUserFirstDialogStage.setTitle("Register Here! ");
-		showNewUserFirstDialogStage.initModality(Modality.WINDOW_MODAL);
-		showNewUserFirstDialogStage.initOwner(primaryStage);
-		Scene scene = new Scene(newUser);
-		showNewUserFirstDialogStage.setScene(scene);
-		showNewUserFirstDialogStage.showAndWait();
+		Main.FxmlLoader(CATAGORY1_PATH);
 	}
 
 	/**
 	 * This method display using fxml loader and new user page1
 	 */
-
 	public static void showNewUser1() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("reasonForTraveling/ReasonForTravelView.fxml"));
-		BorderPane newUser1 = loader.load();
-		mainLayout.setCenter(newUser1);
-
+		Main.FxmlLoader(CATAGORY2_PATH);
 	}
 
-
+	public static void showOtherReasons() throws IOException {
+		Main.FxmlLoader(CATAGORY3_PATH);
+	}
+	public static void showFinalList() throws IOException {
+		Main.FxmlLoader(SHOWLIST_PATH);
+		
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	
 }

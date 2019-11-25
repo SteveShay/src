@@ -1,11 +1,10 @@
 package travelbucketlist;
 
 /**
- * Lasted Updated: 11/21/19
+ * Lasted Updated: 11/18/19
  * Project main class. Currently being used as a testing ground.
  * @authors Steve Shay
  */
-
 import Database.DatabaseTranslator;
 import java.io.IOException;
 import Database.LoadData;
@@ -21,59 +20,56 @@ import models.CreateVacationLocationFromInput;
 import models.RegisterUser;
 
 public class TravelBucketList {
-    static User currentUser1;
-    static User currentUser2;
-    static VacationLocation location1;
-    static VacationLocation location2;
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, ResponseException {
         //Test loading user from file.
-        currentUser1 = loadUser("James Bond");
+        String userFileData = DatabaseTranslator.getUserData("James Bond");
+        String[] userData = userFileData.split(INPUT_SPLIT);
 
-        location1 = loadLocation("New York City");
+        String locationFileData = DatabaseTranslator.getLocationData("New York City");
+        String[] locationData = locationFileData.split(INPUT_SPLIT);
+
+        //Test User object data load and getters.
+        User JamesTest = CreateUserFromInput.createUser(userData);
+        VacationLocation NYC = CreateVacationLocationFromInput.createLocation(locationData);
+
+        //Test zip to latitude and longitude conversion.
+        double[] latAndLong = DatabaseTranslator.getLocationFromZip(JamesTest.getZipCode());
+        System.out.println(latAndLong[0]);
+        System.out.println(latAndLong[1]);
+
+        //Get the airport code for that latitude and longitude.
+        String aircode = APITranslator.getAirportCode(latAndLong[0], latAndLong[1]);
+        System.out.println("Walkertown: " + aircode);
 
         //Test registering a new user.
-        currentUser2 = RegisterUser.newUser("Dans Gaming", 27051);
-        //System.out.println(currentUser2.getName() + ", " + currentUser2.getZipCode() + ", " + currentUser2.getAirportCode());
-        RegisterUser.storeUser(currentUser2.getName(), currentUser2.getZipCode(), currentUser2.getAirportCode(), currentUser2.getCategories(), currentUser2.getUserResponses());
-        currentUser2.setSingleResponse(25, 44);
-        currentUser2.overwriteUser();
+        User newUser = RegisterUser.newUser("Dans Gaming", 27051);
+        System.out.println(newUser.getName() + ", " + newUser.getZipCode() + ", " + newUser.getAirportCode());
+        RegisterUser.storeUser(newUser.getName(), newUser.getZipCode(), newUser.getAirportCode(), newUser.getCategories(), newUser.getUserResponses());
 
         //Test selecting a random destination based on user responses.
-        int selection = currentUser1.selectRandomDestination();
-        if (selection == -1){
-            System.out.println("You have visited all Locations on your list.");
-        }
-        location2 = loadLocation(currentUser1.mapFilename(selection));
+        int selection = JamesTest.selectRandomDestination();
+        System.out.println(selection);
+
+        String locationFileData1 = DatabaseTranslator.getLocationData("Location" + selection);
+        String[] locationData1 = locationFileData1.split(INPUT_SPLIT);
+
+        //Print out the selection details.
+        VacationLocation testLocation = CreateVacationLocationFromInput.createLocation(locationData1);
+        System.out.println(testLocation.getName());
+        System.out.println(testLocation.getCityCode());
+        System.out.println("");
+        System.out.println("");
+
         //Get the projected flight and hotel costs for the selected trip.
-        getFlightAndHotel();
-    }
-
-    static User loadUser(String _name) throws IOException{
-        if(DatabaseTranslator.checkUser(_name)){
-            String userFileData = DatabaseTranslator.getUserData(_name);
-            String[] userData = userFileData.split(INPUT_SPLIT);
-            return CreateUserFromInput.createUser(userData);
-        }
-        else{
-            throw new AssertionError();
-        }
-    }
-
-    static VacationLocation loadLocation(String _name) throws IOException{
-        String locationFileData = DatabaseTranslator.getLocationData(_name);
-        String[] locationData = locationFileData.split(INPUT_SPLIT);
-        return CreateVacationLocationFromInput.createLocation(locationData);
-    }
-
-    static void getFlightAndHotel() throws ResponseException, IOException{
-        double cost1 = APITranslator.getExpectedFlightCost(currentUser1.getAirportCode(), location2.getAirportCode(), TEST_DATE);
+        double cost1 = APITranslator.getExpectedFlightCost(JamesTest.getAirportCode(), testLocation.getAirportCode(), "2019-12-22");
         System.out.format("Flight Total: %.2f", cost1);
         System.out.println("");
 
-        double hotelPrice1 = APITranslator.getExpectedHotelCost(location2.getCityCode());
+        double hotelPrice1 = APITranslator.getExpectedHotelCost(testLocation.getCityCode());
         System.out.format("Hotel (Cost per night): %.2f", hotelPrice1);
     }
 }

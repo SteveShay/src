@@ -10,19 +10,11 @@ import java.io.IOException;
 /**
  * Lasted Updated: 10/29/19
  * Searches Zip.txt for the provided zip code and returns the latitude and longitude.
- * @authors Stephen Hampson
+ * @authors Steve Shay
  */
 class FindLocationFromZip{
-    /**
-     * Search the zip code database (txt file) for the provided zip code.
-     *
-     * @param _zip The provided zip code.
-     * @return Return the appropriate latitude and longitude as a double array, latitude first, longitude second.
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
     static double[] getLatandLong(int _zip) throws FileNotFoundException, IOException{
-        String[] input;
+        String[] input = null;
         double[] result = new double[2];
         Boolean found = false;
 
@@ -48,7 +40,6 @@ class FindLocationFromZip{
            return result;
         }
         else{
-            System.out.println("The zip code provided is invalid. Restart to restart registration.");
             throw new IllegalArgumentException();
         }
     }

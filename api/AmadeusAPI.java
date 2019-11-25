@@ -1,5 +1,11 @@
 package api;
 
+/**
+ * Lasted Updated: 11/13/19
+ * API translation prototypes which will eventually be transfered to the final API translators.
+ * @authors Steve Shay
+ */
+
 import static Enumeration.Enumeration.*;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
@@ -10,13 +16,7 @@ import com.amadeus.resources.HotelOffer;
 import com.amadeus.resources.Location;
 import java.io.IOException;
 
-/**
- * Lasted Updated: 11/13/19
- * API translation prototypes which will eventually be transfered to the final API translators.
- * @authors Stephen Hampson
- */
 public class AmadeusAPI {
-    //Our projects Amadeus API key and secret key, built staticly to reduce code duplication
     public static final String AMADEUS_ID = "L32XhR5nGjRdV3KiGCT58c90NoZ7YAk5";
     public static final String AMADEUS_SECRET = "W1AWTYJzWte788dg";
     static final Amadeus amadeus = Amadeus.builder(AMADEUS_ID, AMADEUS_SECRET).build();

@@ -1,4 +1,4 @@
-package viewPage.newUser;
+package viewPage.fxml;
 
 /**
  * This class manages the interaction between new user page and home page.
@@ -8,22 +8,11 @@ package viewPage.newUser;
 import java.awt.Button;
 import java.awt.Event;
 import java.io.IOException;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import viewPage.Main;
 
 public class NewUserController {
-
-	private Main main;
-
-	@FXML
-	private void goToReasonForTravel() throws IOException {
-		main.showNewUser1();
-	}
-	
-	
-
 	@FXML
 	private RadioButton newAdventureIntersted;
 	@FXML
@@ -41,5 +30,8 @@ public class NewUserController {
 	@FXML
 	private RadioButton newExperianceNotIntersted;
 
-	
+	@FXML
+	private void goToReasonForTravel2() throws IOException {
+		Main.showNewUser1();
+	}
 }
