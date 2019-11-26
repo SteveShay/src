@@ -33,20 +33,20 @@
                   <Font name="Garamond Bold" size="20.0" />
                </font>
             </Label>
-            <TextField blendMode="OVERLAY" layoutX="135.0" layoutY="169.0" prefHeight="25.0" prefWidth="220.0">
+            <TextField fx:id="fullNameRegField" blendMode="OVERLAY" layoutX="135.0" layoutY="169.0" prefHeight="25.0" prefWidth="220.0">
                <font>
                   <Font name="Garamond Bold" size="14.0" />
                </font></TextField>
-            <TextField blendMode="OVERLAY" layoutX="137.0" layoutY="227.0" prefHeight="25.0" prefWidth="219.0">
+            <TextField fx:id="zipCodeRegField" blendMode="OVERLAY" layoutX="137.0" layoutY="227.0" prefHeight="25.0" prefWidth="219.0">
                <font>
                   <Font name="Garamond Bold" size="14.0" />
                </font></TextField>
-            <Button blendMode="DARKEN" layoutX="155.0" layoutY="278.0" mnemonicParsing="false" onAction="#goNewPage1" text="Register! " underline="true">
+            <Button fx:id="registerBtn" blendMode="DARKEN" layoutX="155.0" layoutY="278.0" mnemonicParsing="false" onAction="#storeDataTemp" text="Register! " underline="true">
                <font>
                   <Font name="Garamond Bold" size="24.0" />
                </font>
             </Button>
-            <Button blendMode="DARKEN" layoutX="172.0" layoutY="348.0" mnemonicParsing="false" onAction="#goHome" text="Cancel" underline="true">
+            <Button fx:id="cancelRegBtn" blendMode="DARKEN" layoutX="172.0" layoutY="348.0" mnemonicParsing="false" onAction="#goHome" text="Cancel" underline="true">
                <font>
                   <Font name="Garamond Bold" size="19.0" />
                </font>

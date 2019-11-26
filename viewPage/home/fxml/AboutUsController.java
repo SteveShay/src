@@ -1,7 +1,7 @@
 package viewPage.Home.fxml;
 /**
  * This class manages the interaction between About us and home page.
- * Reagan Berhe 
+ * Reagan Berhe
  * 11/18/2019
  */
 
@@ -12,6 +12,9 @@ import viewPage.Main;
 public class AboutUsController {
     @FXML
     private void aboutUsCancel() throws IOException {
+        System.out.println("test 2");
         Main.showMainView();
-    } 
+
+    }
+
 }
