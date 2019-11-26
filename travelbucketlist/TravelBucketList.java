@@ -28,8 +28,9 @@ public class TravelBucketList {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, ResponseException {
-        //Test loading user from file.
+    //public static void main(String[] args) throws IOException, ResponseException {
+        //viewPage.Main.main;
+        /*//Test loading user from file.
         currentUser1 = loadUser("James Bond");
 
         location1 = loadLocation("New York City");
@@ -60,7 +61,8 @@ public class TravelBucketList {
         else{
             throw new AssertionError();
         }
-    }
+    */
+    //}
 
     static VacationLocation loadLocation(String _name) throws IOException{
         String locationFileData = DatabaseTranslator.getLocationData(_name);
@@ -75,5 +77,9 @@ public class TravelBucketList {
 
         double hotelPrice1 = APITranslator.getExpectedHotelCost(location2.getCityCode());
         System.out.format("Hotel (Cost per night): %.2f", hotelPrice1);
+    }
+
+    public static void testint(){
+        System.out.println("testing");
     }
 }

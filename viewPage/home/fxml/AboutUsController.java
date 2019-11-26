@@ -12,9 +12,6 @@ import viewPage.Main;
 public class AboutUsController {
     @FXML
     private void aboutUsCancel() throws IOException {
-        System.out.println("test 2");
         Main.showMainView();
-
     }
-
 }

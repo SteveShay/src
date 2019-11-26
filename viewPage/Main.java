@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import models.User;
 
 public class Main extends Application {
     private static Stage primaryStage;
@@ -26,6 +27,8 @@ public class Main extends Application {
     private static final String CATAGORY2_PATH = "NewUser/fxml/NewUserView2.fxml";
     private static final String CATAGORY3_PATH = "OtherNewUser/fxml/OthersNewUserView.fxml";
     private static final String SHOWLIST_PATH = "ShowList/fxml/ShowListView.fxml";
+
+    public static User currentUser;
 
 
     /**
