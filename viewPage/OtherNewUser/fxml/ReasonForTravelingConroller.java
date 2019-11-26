@@ -15,8 +15,8 @@ public class ReasonForTravelingConroller {
     private Main main;
    
     @FXML
-	private void showTheList() throws IOException {
-		Main.showFinalList();
+	private void goBackHome() throws IOException {
+		Main.showNewUser();
 	}
 }
 

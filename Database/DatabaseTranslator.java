@@ -1,47 +1,132 @@
 package Database;
 
-/**
- * Lasted Updated: 10/29/19
- * Connects standard methods to the Database solution currently in use.
- * @author Steve
- */
 import static Enumeration.Enumeration.*;
 import java.io.IOException;
 
+/**
+ * Lasted Updated: 11/21/19
+ * Connects standard methods to the Database solution currently in use.
+ * @author Stephen Hampson
+ */
 public class DatabaseTranslator {
+    //Supported Database types.
     private static final int TEXT = 1;
 
-    private static final int CURRENTUSERDATA = TEXT;
-    private static final int CURRENTLOCATIONDATA = TEXT;
-    private static final int CURRENTZIPDATA = TEXT;
+    //Set the database type for each usage type.
+    private static final int CURRENT_USER_DATA = TEXT;
+    private static final int CURRENT_LOCATION_DATA = TEXT;
+    private static final int CURRENT_ZIP_DATA = TEXT;
 
+    /**
+     * Direct requests for primary user data (used to set User class variables) to the appropriate database class.
+     *
+     * @param _name The users name/filename.
+     * @return The users stored data/variables as a string.
+     * @throws IOException
+     */
     public static String getUserData(String _name) throws IOException{
-        switch(CURRENTUSERDATA){
+        switch(CURRENT_USER_DATA){
             case 1:
-                return LoadData.LoadFile(USER_FILEPATH, _name);
+                return LoadData.LoadData(USER_FILEPATH, convertName(_name));
             default:
-                System.out.println("No database is selected");
+                System.out.println("No database is selected.");
                 throw new AssertionError();
         }
     }
 
+    /**
+     * Direct requests for a users location filename array to the appropriate database class.
+     *
+     * @param _name The users name/filename.
+     * @return The users locations filename array as a string.
+     * @throws IOException
+     */
+    public static String getUserLocations (String _name) throws IOException{
+        switch(CURRENT_USER_DATA){
+            case 1:
+                return LoadData.LoadUserLocations(convertName(_name));
+            default:
+                System.out.println("No database is selected.");
+                throw new AssertionError();
+        }
+    }
+
+    /**
+     * Direct requests for a single locations data to the appropriate database class.
+     *
+     * @param _name The locations filename.
+     * @return The locations stored data/variables as a string.
+     * @throws IOException
+     */
     public static String getLocationData(String _name) throws IOException{
-        switch(CURRENTLOCATIONDATA){
+        switch(CURRENT_LOCATION_DATA){
             case 1:
-                return LoadData.LoadFile(LOCATION_FILEPATH, _name);
+                return LoadData.LoadData(LOCATION_FILEPATH, _name);
             default:
-                System.out.println("No database is selected");
+                System.out.println("No database is selected.");
                 throw new AssertionError();
         }
-
     }
 
+    /**
+     * Direct requests for a zip codes latitude and longitude to the appropriate database class.
+     *
+     * @param _zip The zip code to be searched.
+     * @return The matching latitude and longitude as a double array, latitude first, longitude second.
+     * @throws IOException
+     */
     public static double[] getLocationFromZip(int _zip) throws IOException{
-        switch (CURRENTZIPDATA) {
+        switch (CURRENT_ZIP_DATA) {
             case 1:
                 return FindLocationFromZip.getLatandLong(_zip);
             default:
+                System.out.println("No database is selected.");
                 throw new AssertionError();
         }
+    }
+
+    /**
+     * Direct requests to store a users data to the appropriate database class.
+     *
+     * @param _name The users name/filename.
+     * @param _output The string to be written.
+     * @throws IOException
+     */
+    public static void storeUserData(String _name, String _output) throws IOException{
+        switch (CURRENT_USER_DATA) {
+            case 1:
+                StoreData.writeFile(convertName(_name), _output);
+                break;
+            default:
+                System.out.println("No database is selected.");
+                throw new AssertionError();
+        }
+    }
+
+    /**
+     * Check if a user has a record in the current database.
+     *
+     * @param _name The users name/filename.
+     * @return A boolean value indicating whether or not the user already exists.
+     */
+    public static boolean checkUser(String _name){
+        switch (CURRENT_USER_DATA) {
+            case 1:
+                return LoadData.checkUser(convertName(_name));
+            default:
+                System.out.println("No database selected.");
+                throw new AssertionError();
+        }
+    }
+
+    /**
+     * Helper method to homogenize usernames by converting them to lowercase and removing spaces.
+     *
+     * @param _name The username to be homogenized.
+     * @return The homogenized username.
+     */
+    private static String convertName(String _name){
+        String lowercaseName = _name.toLowerCase();
+        return lowercaseName.replaceAll("\\s","");
     }
 }

@@ -14,5 +14,4 @@ public class AboutUsController {
     private void aboutUsCancel() throws IOException {
         Main.showMainView();
     } 
-    
 }
