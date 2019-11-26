@@ -5,14 +5,15 @@ import com.amadeus.exceptions.ResponseException;
 import java.io.IOException;
 
 /**
- *
+ * These are deprecated function tests stored for project history an in case they're needed again.
+ * Further comments will not be provided unless they were copied with the original tests.
  * @author Steve Shay
  */
 public class Testing {
     public static void main(String[] args) throws ResponseException, IOException{
         //api.apiPrototype.getExpectedFlightCost("GSO", "JFK", "2019-12-22");
         //apiPrototype.getExpectedHotelCost("NYC");
-        System.out.println(APITranslator.getExpectedHotelCost("HNL"));
+        //System.out.println(APITranslator.getExpectedHotelCost("HNL"));
 
         /*OLD TESTS
         System.out.println("");
@@ -28,7 +29,7 @@ public class Testing {
         System.out.print(" ");
         //test integer attribute
         System.out.println(JamesTest.getSingleResponse(3)+JamesTest.getSingleResponse(20)+JamesTest.getSingleResponse(25));
-        
+
         String date = "2019-12-22";
         User bob = new User("Bob", 27284, "GSO");
         VacationLocation NY = new VacationLocation("New York", 11430, "JFK", "NYC", "Test Description");
