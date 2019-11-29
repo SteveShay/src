@@ -9,7 +9,7 @@ package travelbucketlist;
 import Database.DatabaseTranslator;
 import java.io.IOException;
 import Database.LoadData;
-import models.VacationLocation;
+import models.Destination;
 import models.User.*;
 import models.User;
 import static Enumeration.Enumeration.*;
@@ -17,14 +17,14 @@ import api.APITranslator;
 import com.amadeus.exceptions.ResponseException;
 import java.util.Arrays;
 import models.CreateUserFromInput;
-import models.CreateVacationLocationFromInput;
+import models.CreateDestinationFromInput;
 import models.RegisterUser;
 
 public class TravelBucketList {
     static User currentUser1;
     static User currentUser2;
-    static VacationLocation location1;
-    static VacationLocation location2;
+    static Destination location1;
+    static Destination location2;
     /**
      * @param args the command line arguments
      */
@@ -64,10 +64,10 @@ public class TravelBucketList {
     */
     //}
 
-    static VacationLocation loadLocation(String _name) throws IOException{
+    static Destination loadLocation(String _name) throws IOException{
         String locationFileData = DatabaseTranslator.getLocationData(_name);
         String[] locationData = locationFileData.split(INPUT_SPLIT);
-        return CreateVacationLocationFromInput.createLocation(locationData);
+        return CreateDestinationFromInput.createLocation(locationData);
     }
 
     static void getFlightAndHotel() throws ResponseException, IOException{
