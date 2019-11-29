@@ -24,26 +24,60 @@ public class User extends BaseData {
     int[] categoryResponses = new int[CATEGORY_ARRAY_SIZE];
 
     //All user constructors.
+    /**
+     * Construct a user from a name and zip code.
+     *
+     * @param _name The user's name.
+     * @param _zipCode The user's zip code.
+     */
+    public User(String _name, int _zipCode){
+        super(_name, _zipCode);
+    }
+
+    /**
+     * Construct a user from a name, zip code, and airport code.
+     *
+     * @param _name The user's name.
+     * @param _zipCode The user's zip code.
+     * @param _airportCode The IATA airport code of the users nearest major airport.
+     */
     public User (String _name, int _zipCode, String _airportCode){
         super(_name, _zipCode, _airportCode);
     }
 
+    /**
+     * Construct a user from a name, zip code, airport code, and array of location responses.
+     *
+     * @param _name The user's name.
+     * @param _zipCode The user's zip code.
+     * @param _airportCode The IATA airport code of the users nearest major airport.
+     * @param _responses The array of responses that the user gave the 25 locations on the bucket list.
+     */
     public User(String _name, int _zipCode, String _airportCode, int[] _responses){
         super(_name, _zipCode, _airportCode);
         this.userResponses = _responses;
     }
 
+    /**
+     * Construct a user from a name, zip code, airport code, array of location responses, and .
+     *
+     * @param _name The user's name.
+     * @param _zipCode The user's zip code.
+     * @param _airportCode The IATA airport code of the users nearest major airport.
+     * @param _categories The array of category responses the user gave to the 5 location categories.
+     * @param _responses The array of responses that the user gave the 25 locations on the bucket list.
+     */
     public User(String _name, int _zipCode, String _airportCode, int[] _categories, int[] _responses){
         super(_name, _zipCode, _airportCode);
         this.userResponses = _responses;
         this.categoryResponses = _categories;
     }
 
-    public User(String _name, int _zipCode){
-        super(_name, _zipCode);
-    }
-
-    //Select a random destination based on the users responses about their interests.
+    /**
+     * Select a random destination based on the users responses about their interests.
+     *
+     * @return The index of the selected destination.
+     */
     public int selectRandomDestination(){
         //Update the ammount of locations the user expressed interest in.
         countTrues();
@@ -73,11 +107,14 @@ public class User extends BaseData {
                 returnIndex++;
             }
         }
-        //End by returning the 'returnIndex'.
+        //End by returning the 'returnIndex' - 1 to adjust.
         return returnIndex - 1;
     }
 
-    //Check to make sure the user didn't answer false to all locations.
+    /**
+     * Check to make sure the user didn't answer false to all locations.
+     * If they did, pick random location to mark true until 5 locations have been selected.
+     */
     public void checkResponseValid(){
         countTrues();
         int selection;
@@ -96,34 +133,10 @@ public class User extends BaseData {
         }
     }
 
-    public void overwriteUser () throws IOException{
-        String output = toString();
-        output += DatabaseTranslator.getUserLocations(getName());
-        DatabaseTranslator.storeUserData(getName(), output);
-    }
-
-    public String mapFilename(int _index) throws FileNotFoundException, IOException{
-        String[] input;
-        String mappedLocationFilename = "";
-
-        String filepath = USER_FILEPATH + getLowercaseName() + TXT;
-        File inputFile = new File(filepath);
-        BufferedReader br = new BufferedReader(new FileReader(inputFile));
-
-        br.readLine();
-        String str;
-        while ((str = br.readLine()) != null){
-            input = str.split("\t");
-            int intIndex = Integer.parseInt(input[0]);
-
-            if (_index == intIndex){
-                mappedLocationFilename = input[1];
-            }
-        }
-        return mappedLocationFilename;
-    }
-
     @Override
+    /**
+     * Returns the users data as a string.
+     */
     public String toString(){
         String catagories = Arrays.toString(getCategories());
         String responses = Arrays.toString(getUserResponses());
@@ -131,7 +144,9 @@ public class User extends BaseData {
         return output;
     }
 
-    //Loop through the entire array and update the final index with how many times they responded true.
+    /**
+     * Loop through the entire array and update the final index with how many times they responded true.
+     */
     private void countTrues(){
         int count = 0;
         for (int i = 0; i < this.userResponses.length - 2; i++){

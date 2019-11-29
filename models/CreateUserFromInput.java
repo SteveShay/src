@@ -9,6 +9,12 @@ import java.util.Arrays;
  * @authors Steve Shay
  */
 public class CreateUserFromInput {
+    /**
+     * Interprets a string array to create a user object.
+     *
+     * @param _input the users data as a string array.
+     * @return The users as an object.
+     */
     public static User createUser(String[] _input){
 
         String name = _input[DATA_ARRAY_NAME];
@@ -24,6 +30,13 @@ public class CreateUserFromInput {
         return new User(name, zip, airport, intCategories, intResponses);
     }
 
+    /**
+     * Turns a string array from read the data store into an integer array
+     *
+     * @param _responseInput The string array to be converted.
+     * @param _size The size of the array.
+     * @return The converted array.
+     */
     private static int[] parseResponses(String[] _responseInput, int _size){
         int[] intResponses = new int[_size];
 

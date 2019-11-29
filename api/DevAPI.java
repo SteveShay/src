@@ -29,14 +29,17 @@ public class DevAPI {
         double averageby = 5.00;
         double total = 0;
 
+        //Get stored values from text file.
         double[] flightRange = getRange(FLIGHT_RANGE_FILEPATH, _destinationAirport);
         double base = flightRange[0];
         double range = flightRange[1];
 
+        //Create 5 random flight prices from the given base and range values.
         for(int i = 0; i < averageby; i++){
             total += (base + (Math.random() * range));
         }
 
+        //Return the average.
         return total / averageby;
     }
 
@@ -53,14 +56,17 @@ public class DevAPI {
         double averageby = 5.00;
         double total = 0;
 
+        //Get stored values from text file.
         double[] hotelRange = getRange(HOTEL_RANGE_FILEPATH, _citycode);
         double base = hotelRange[0];
         double range = hotelRange[1];
 
+        //Create five random hotel room prices from the given base and ranges values.
         for(int i = 0; i < averageby; i++){
             total += (base + (Math.random() * range));
         }
 
+        //Retunr the average.
         return total / averageby;
     }
 
@@ -72,6 +78,7 @@ public class DevAPI {
      * @return The default IATA airport code.
      */
     static String getAirportCode (double _latitude, double _longitude){
+        //Return a known airport code near this programs development site.
         return "GSO";
     }
 
@@ -85,23 +92,30 @@ public class DevAPI {
      * @throws IOException
      */
     private static double[] getRange(String _filepath, String _code) throws FileNotFoundException, IOException{
+        //Create variable storage.
         String[] input = null;
         double[] result = new double[2];
 
+        //Create the file reader for the given filepath.
         File inputFile = new File(_filepath);
         BufferedReader br = new BufferedReader(new FileReader(inputFile));
 
         String str;
         while ((str = br.readLine()) != null){
+            //Split the input line.
             input = str.split("\t");
+            //If value read from the file matches the value being searched for...
             if (_code.equals(input[0])){
+                //...read the base and reange value from the file...
                 String base = input[1];
                 String range = input[2];
 
+                //...and package them for return.
                 result[0] = Double.parseDouble(base);
                 result[1] = Double.parseDouble(range);
             }
         }
+        //Return the stored values.
         return result;
     }
 }

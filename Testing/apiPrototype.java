@@ -11,7 +11,7 @@ import com.amadeus.resources.HotelOffer;
 import com.amadeus.resources.Location;
 
 import models.User;
-import models.VacationLocation;
+import models.Destination;
 
 /**
  * The original API prototypes created to test and learn the ins and outs of the Amadeus API and its Java SDK.

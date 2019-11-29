@@ -1,6 +1,7 @@
 package Database;
 
 import static Enumeration.Enumeration.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -45,6 +46,25 @@ public class DatabaseTranslator {
         switch(CURRENT_USER_DATA){
             case 1:
                 return LoadData.LoadUserLocations(convertName(_name));
+            default:
+                System.out.println("No database is selected.");
+                throw new AssertionError();
+        }
+    }
+
+    /**
+     * Directs requests to map an index selection to a users specific location filename to the appropriate database class.
+     *
+     * @param _name The name/filename of the user.
+     * @param _index The index of the location to be mapped.
+     * @return the filename of the location selected.
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public static String mapFilename(String _name, int _index) throws FileNotFoundException, IOException {
+        switch (CURRENT_USER_DATA) {
+            case 1:
+                return LoadData.mapFilename(convertName(_name), _index);
             default:
                 System.out.println("No database is selected.");
                 throw new AssertionError();

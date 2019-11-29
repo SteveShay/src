@@ -9,7 +9,7 @@ package travelbucketlist;
 import Database.DatabaseTranslator;
 import java.io.IOException;
 import Database.LoadData;
-import models.VacationLocation;
+import models.Destination;
 import models.User.*;
 import models.User;
 import static Enumeration.Enumeration.*;
@@ -17,19 +17,20 @@ import api.APITranslator;
 import com.amadeus.exceptions.ResponseException;
 import java.util.Arrays;
 import models.CreateUserFromInput;
-import models.CreateVacationLocationFromInput;
+import models.CreateDestinationFromInput;
 import models.RegisterUser;
 
 public class TravelBucketList {
     static User currentUser1;
     static User currentUser2;
-    static VacationLocation location1;
-    static VacationLocation location2;
+    static Destination location1;
+    static Destination location2;
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, ResponseException {
-        //Test loading user from file.
+    //public static void main(String[] args) throws IOException, ResponseException {
+        //viewPage.Main.main;
+        /*//Test loading user from file.
         currentUser1 = loadUser("James Bond");
 
         location1 = loadLocation("New York City");
@@ -46,7 +47,7 @@ public class TravelBucketList {
         if (selection == -1){
             System.out.println("You have visited all Locations on your list.");
         }
-        location2 = loadLocation(currentUser1.mapFilename(selection));
+        location2 = loadLocation(DatabaseTranslator.mapFilename(currentUser1.getname(), selection));
         //Get the projected flight and hotel costs for the selected trip.
         getFlightAndHotel();
     }
@@ -60,12 +61,24 @@ public class TravelBucketList {
         else{
             throw new AssertionError();
         }
-    }
+    */
+    //}
 
-    static VacationLocation loadLocation(String _name) throws IOException{
+    static Destination loadLocation(String _name) throws IOException{
         String locationFileData = DatabaseTranslator.getLocationData(_name);
         String[] locationData = locationFileData.split(INPUT_SPLIT);
-        return CreateVacationLocationFromInput.createLocation(locationData);
+        return CreateDestinationFromInput.createLocation(locationData);
+    }
+
+    /**
+    * Overwrites a users stored data.
+    *
+    * @throws IOException
+    */
+    static void overwriteUser() throws IOException {
+        String output = currentUser1.toString();
+        output += DatabaseTranslator.getUserLocations(currentUser1.getName());
+        DatabaseTranslator.storeUserData(currentUser1.getName(), output);
     }
 
     static void getFlightAndHotel() throws ResponseException, IOException{
@@ -75,5 +88,9 @@ public class TravelBucketList {
 
         double hotelPrice1 = APITranslator.getExpectedHotelCost(location2.getCityCode());
         System.out.format("Hotel (Cost per night): %.2f", hotelPrice1);
+    }
+
+    public static void testint(){
+        System.out.println("testing");
     }
 }
