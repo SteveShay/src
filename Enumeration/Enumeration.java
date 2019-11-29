@@ -43,6 +43,13 @@ public class Enumeration {
     public static final String HOTEL_RANGE_FILEPATH = "src/LocationFiles/DevHotelPriceRanges.txt";
     public static final String FLIGHT_RANGE_FILEPATH = "src/LocationFiles/DevFlightPriceRanges.txt";
     public static final String TXT = ".txt";
+    //Location Categories
+    public static final int OUTDOOR_ADVENTURES = 0;
+    public static final int ENTERTAINMENT = 1;
+    public static final int EDUCATIONAL_ENTERTAINMENT = 2;
+    public static final int CULTURAL = 3;
+    public static final int HISTORICAL = 4;
+
     //Locations indices
     public static final int OUTDOOR_START = 0;
     public static final int OUTDOOR_END = 4;

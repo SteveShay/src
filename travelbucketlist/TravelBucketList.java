@@ -47,7 +47,7 @@ public class TravelBucketList {
         if (selection == -1){
             System.out.println("You have visited all Locations on your list.");
         }
-        location2 = loadLocation(currentUser1.mapFilename(selection));
+        location2 = loadLocation(DatabaseTranslator.mapFilename(currentUser1.getname(), selection));
         //Get the projected flight and hotel costs for the selected trip.
         getFlightAndHotel();
     }
@@ -68,6 +68,17 @@ public class TravelBucketList {
         String locationFileData = DatabaseTranslator.getLocationData(_name);
         String[] locationData = locationFileData.split(INPUT_SPLIT);
         return CreateDestinationFromInput.createLocation(locationData);
+    }
+
+    /**
+    * Overwrites a users stored data.
+    *
+    * @throws IOException
+    */
+    static void overwriteUser() throws IOException {
+        String output = currentUser1.toString();
+        output += DatabaseTranslator.getUserLocations(currentUser1.getName());
+        DatabaseTranslator.storeUserData(currentUser1.getName(), output);
     }
 
     static void getFlightAndHotel() throws ResponseException, IOException{

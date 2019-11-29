@@ -49,7 +49,7 @@ public class RegisterController {
         if(intZip > 10000 && intZip < 100000) {
             Main.currentUser = RegisterUser.newUser(name, intZip);
             RegisterUser.storeUser(Main.currentUser.getName(), Main.currentUser.getZipCode(), Main.currentUser.getAirportCode(), Main.currentUser.getCategories(), Main.currentUser.getUserResponses());
-            Main.showNewUser();
+            Main.showCategories();
         }
     }
 
