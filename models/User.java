@@ -133,53 +133,6 @@ public class User extends BaseData {
         }
     }
 
-    /**
-     * Overwrites a users stored data.
-     *
-     * @throws IOException
-     */
-    public void overwriteUser () throws IOException{
-        //Get the users current data.
-        String output = toString();
-        //Add the users locations filepath array from their current file.
-        output += DatabaseTranslator.getUserLocations(getName());
-        //Store thje new data.
-        DatabaseTranslator.storeUserData(getName(), output);
-    }
-
-    /**
-     * Map the selected location index to the users stored array of location filenames.
-     * This mapping prevents errors in the event of locations being replaced.
-     *
-     * @param _index The index of the location to be mapped.
-     * @return the filename of the location selected.
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public String mapFilename(int _index) throws FileNotFoundException, IOException{
-        String[] input;
-        String mappedLocationFilename = "";
-
-        //The users data store filepath.
-        String filepath = USER_FILEPATH + getLowercaseName() + TXT;
-        //Create a reader for the users data store.
-        File inputFile = new File(filepath);
-        BufferedReader br = new BufferedReader(new FileReader(inputFile));
-
-        //'Burn' the first line input to reach the users filename array.
-        br.readLine();
-        String str;
-        while ((str = br.readLine()) != null){
-            input = str.split("\t");
-            int intIndex = Integer.parseInt(input[0]);
-
-            if (_index == intIndex){
-                mappedLocationFilename = input[1];
-            }
-        }
-        return mappedLocationFilename;
-    }
-
     @Override
     /**
      * Returns the users data as a string.
