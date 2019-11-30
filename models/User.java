@@ -112,25 +112,54 @@ public class User extends BaseData {
     }
 
     /**
+     *
      * Check to make sure the user didn't answer false to all locations.
-     * If they did, pick random location to mark true until 5 locations have been selected.
+     * @return A boolean value indicating whether the response is valid.
      */
-    public void checkResponseValid(){
+    public boolean checkResponseValid(){
+        //Update the count true count of the userResponse array.
         countTrues();
-        int selection;
-        int count = 0;
 
-        //If they did answer false to all.....
+        //Check if the user has answered false to everything.
         if (this.userResponses[25] == 0){
-            //Select five locations from the whole for them.
-            while (count < 5){
-                selection = r.nextInt((NUMBER_OF_LOCATIONS) + 1);
-                if (this.userResponses[selection] == FALSE){
-                    this.userResponses[selection] = TRUE;
-                    count++;
-                }
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check if the user expressed interest in any categories.
+     *
+     * @return Return false if any category is true, otherwise return false.
+     */
+    public boolean checkCategoriesVaild(){
+        int count = 0;
+        for (int i = 0; i < this.categoryResponses.length - 1; i++) {
+            if (categoryResponses[i] == TRUE) {
+                count++;
             }
         }
+        if (count > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * If the user answered false to all locations pick random locations to mark true until 5 locations have been selected.
+     */
+    public void responseOverride(){
+        int selection;
+        int count = 0;
+        //Select five locations from the whole for them.
+        while (count < 5){
+            selection = r.nextInt((NUMBER_OF_LOCATIONS) + 1);
+            if (this.userResponses[selection] == FALSE){
+                    this.userResponses[selection] = TRUE;
+                count++;
+            }
+        }
+        countTrues();
     }
 
     @Override

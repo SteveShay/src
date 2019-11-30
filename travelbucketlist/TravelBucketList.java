@@ -28,21 +28,32 @@ public class TravelBucketList {
     /**
      * @param args the command line arguments
      */
-    //public static void main(String[] args) throws IOException, ResponseException {
-        //viewPage.Main.main;
-        /*//Test loading user from file.
-        currentUser1 = loadUser("James Bond");
+    public static void main(String[] args) throws IOException, ResponseException {        
+        double[] latAndLong = DatabaseTranslator.getLocationFromZip(27051);
+        System.out.println(latAndLong[0]);
+        System.out.println(latAndLong[1]);
 
-        location1 = loadLocation("New York City");
+        String aircode = APITranslator.getAirportCode(latAndLong[0], latAndLong[1]);
+        System.out.println("Walkertown: " + aircode);
+
+
+
+
+        //viewPage.Main.main;
+        //Test loading user from file.
+        //currentUser1 = loadUser("James Bond");
+
+        //location1 = loadLocation("New York City");
 
         //Test registering a new user.
-        currentUser2 = RegisterUser.newUser("Dans Gaming", 27051);
+        //currentUser2 = RegisterUser.newUser("Dans Gaming", 27051);
         //System.out.println(currentUser2.getName() + ", " + currentUser2.getZipCode() + ", " + currentUser2.getAirportCode());
-        RegisterUser.storeUser(currentUser2.getName(), currentUser2.getZipCode(), currentUser2.getAirportCode(), currentUser2.getCategories(), currentUser2.getUserResponses());
-        currentUser2.setSingleResponse(25, 44);
-        currentUser2.overwriteUser();
+        //RegisterUser.storeUser(currentUser2.getName(), currentUser2.getZipCode(), currentUser2.getAirportCode(), currentUser2.getCategories(), currentUser2.getUserResponses());
+        //currentUser2.setSingleResponse(25, 44);
+        //currentUser2.overwriteUser();
 
         //Test selecting a random destination based on user responses.
+        /*
         int selection = currentUser1.selectRandomDestination();
         if (selection == -1){
             System.out.println("You have visited all Locations on your list.");
@@ -50,6 +61,7 @@ public class TravelBucketList {
         location2 = loadLocation(DatabaseTranslator.mapFilename(currentUser1.getname(), selection));
         //Get the projected flight and hotel costs for the selected trip.
         getFlightAndHotel();
+        */
     }
 
     static User loadUser(String _name) throws IOException{
@@ -61,8 +73,7 @@ public class TravelBucketList {
         else{
             throw new AssertionError();
         }
-    */
-    //}
+    }
 
     static Destination loadLocation(String _name) throws IOException{
         String locationFileData = DatabaseTranslator.getLocationData(_name);

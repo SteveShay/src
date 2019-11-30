@@ -95,6 +95,7 @@ public class AmadeusAPI {
     }
 
     static String getAirportCode(double _latitude, double _longitude) throws ResponseException{
+
         //Request the nearest major airport to the given latitude and longitude from the Amadeus API.
         Location[] locations = amadeus.referenceData.locations.airports.get(Params
             .with("latitude", _latitude)

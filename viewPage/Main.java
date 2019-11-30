@@ -14,8 +14,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import models.User;
+import static Enumeration.Enumeration.*;
 
 public class Main extends Application {
+    public static User currentUser;
+    public static int count = 0;
+    public static int startIndex = 0;
+
     private static Stage primaryStage;
     private static BorderPane mainLayout;
     private static final String HOMEPAGE_PATH = "Home/fxml/HomePageView.fxml";
@@ -28,9 +33,7 @@ public class Main extends Application {
     private static final String CATAGORY3_PATH = "OtherNewUser/fxml/OthersNewUserView.fxml";
     private static final String SHOWLIST_PATH = "ShowList/fxml/ShowListView.fxml";
     private static final String CATEGORY_PATH = "NewUser/fxml/NewUserCategories.fxml";
-
-    public static User currentUser;
-
+    private static final String LOCATIONS_PATH = "NewUser/fxml/NewUserLocations.fxml";
 
     /**
      * This Method Create the main Stage for all pages.
@@ -110,6 +113,19 @@ public class Main extends Application {
 
     public static void showCategories() throws IOException {
         Main.FxmlLoader(CATEGORY_PATH);
+    }
+
+    public static void loopCategories() throws IOException {
+        if (count < CATEGORY_ARRAY_SIZE) {
+            if (currentUser.getSingleCategory(count) == TRUE) {
+                startIndex = count * 5;
+                Main.FxmlLoader(LOCATIONS_PATH);
+            }
+            else {
+                count++;
+                loopCategories();
+            }
+        }
     }
 
     public static void main(String[] args) {

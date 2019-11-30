@@ -62,6 +62,8 @@ public class Enumeration {
     public static final int HISTORICAL_START = 20;
     public static final int HISTORICAL_END = 4;
 
+    public static final String[] CURRENT_CATEGORIES = {"Outdoor Adventure", "Entertainment", "Educational Entertainment", "Cultural", "Historical"};
+
     //Current primary Location mapping. Replace string with file name if a location is replaced. Match replacement index with location name.
     public static final String[] CURRENT_LOCATION_FILENAMES =
     {"Location1", "Location2", "Location3", "Location4", "Location5",

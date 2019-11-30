@@ -1,5 +1,6 @@
 package viewPage.Regster.fxml;
 
+import Database.DatabaseTranslator;
 import com.amadeus.exceptions.ResponseException;
 import java.io.File;
 import java.io.FileWriter;
@@ -14,7 +15,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import models.RegisterUser;
 import viewPage.Main;
@@ -46,10 +50,14 @@ public class RegisterController {
             System.out.println("Zip input is not an Integer");
         }
 
-        if(intZip > 10000 && intZip < 100000) {
+        if(DatabaseTranslator.getLocationFromZip(intZip)[0] != 0.0) {
             Main.currentUser = RegisterUser.newUser(name, intZip);
             RegisterUser.storeUser(Main.currentUser.getName(), Main.currentUser.getZipCode(), Main.currentUser.getAirportCode(), Main.currentUser.getCategories(), Main.currentUser.getUserResponses());
             Main.showCategories();
+        }
+        else {
+            Alert zipError = new Alert(AlertType.ERROR, "Invalid Zip Code", ButtonType.OK);
+            zipError.show();
         }
     }
 

@@ -8,6 +8,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 
 import static Enumeration.Enumeration.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import viewPage.Main;
 
 /**
@@ -17,44 +19,16 @@ import viewPage.Main;
 public class NewUserCategoriesController {
 
     @FXML private RadioButton OutdoorInterested;
-    @FXML private RadioButton OutdoorNotInterested;
     @FXML private RadioButton EntertainmentInterested;
-    @FXML private RadioButton EntertainmentNotInterested;
     @FXML private RadioButton EducationalInterested;
-    @FXML private RadioButton EducationalNotInterested;
     @FXML private RadioButton HistoricalInterested;
-    @FXML private RadioButton HistoricalNotInterested;
     @FXML private RadioButton CulturalIntereested;
-    @FXML private RadioButton CulturalNotInterested;
-
-    @FXML private ToggleGroup OutdoorAdventure;
-    @FXML private ToggleGroup Entertainment;
-    @FXML private ToggleGroup Educational;
-    @FXML private ToggleGroup Cultural;
-    @FXML private ToggleGroup Historical;
 
 
     @FXML private void SubmitResponses() throws IOException {
         //RadioButton[] cats = {OutdoorInterested, EntertainmentInterested, EducationalInterested, CulturalIntereested, HistoricalInterested};
         int[] categories = new int[CATEGORY_ARRAY_SIZE];
         //int currentIndex = 0;
-
-        OutdoorAdventure = new ToggleGroup();
-        Educational = new ToggleGroup();
-        Entertainment = new ToggleGroup();
-        Cultural = new ToggleGroup();
-        Historical = new ToggleGroup();
-
-        this.OutdoorInterested.setToggleGroup(OutdoorAdventure);
-        this.OutdoorNotInterested.setToggleGroup(OutdoorAdventure);
-        this.EntertainmentInterested.setToggleGroup(Entertainment);
-        this.EntertainmentNotInterested.setToggleGroup(Entertainment);
-        this.EducationalInterested.setToggleGroup(Educational);
-        this.EducationalNotInterested.setToggleGroup(Educational);
-        this.CulturalIntereested.setToggleGroup(Cultural);
-        this.CulturalNotInterested.setToggleGroup(Cultural);
-        this.HistoricalInterested.setToggleGroup(Historical);
-        this.HistoricalNotInterested.setToggleGroup(Historical);
 
         if (OutdoorInterested.isSelected()) {
             categories[OUTDOOR_ADVENTURES] = TRUE;
@@ -73,8 +47,23 @@ public class NewUserCategoriesController {
         }
 
         Main.currentUser.setCategories(categories);
-        String output = Main.currentUser.toString();
-        output += DatabaseTranslator.getUserLocations(Main.currentUser.getName());
-        DatabaseTranslator.storeUserData(Main.currentUser.getName(), output);
+
+
+        if (Main.currentUser.checkCategoriesVaild()) {
+            String output = Main.currentUser.toString();
+            output += DatabaseTranslator.getUserLocations(Main.currentUser.getName());
+            DatabaseTranslator.storeUserData(Main.currentUser.getName(), output);
+            Main.loopCategories();
+        }
+        else {
+            Alert invalidSelection = new Alert(Alert.AlertType.ERROR, "No categories have been selected. Selecting 5 random locations.", ButtonType.OK);
+            invalidSelection.showAndWait();
+            Main.currentUser.responseOverride();
+            String output = Main.currentUser.toString();
+            output += DatabaseTranslator.getUserLocations(Main.currentUser.getName());
+            DatabaseTranslator.storeUserData(Main.currentUser.getName(), output);
+        }
+
+
     }
 }
