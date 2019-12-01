@@ -40,8 +40,13 @@ public class VacationFinalController {
         description.setText(Main.destination.getDescription());
     }
 
-    @FXML void acceptDestination() {
+    @FXML void acceptDestination() throws IOException {
         Main.currentUser.setSingleResponse(Main.selection, FALSE);
+
+        String output = Main.currentUser.toString();
+        output += DatabaseTranslator.getUserLocations(Main.currentUser.getName());
+        DatabaseTranslator.storeUserData(Main.currentUser.getName(), output);
+
         System.exit(0);
     }
 

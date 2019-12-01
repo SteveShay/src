@@ -178,7 +178,7 @@ public class User extends BaseData {
      */
     private void countTrues(){
         int count = 0;
-        for (int i = 0; i < this.userResponses.length - 2; i++){
+        for (int i = 0; i < this.userResponses.length - 1; i++){
             if (this.userResponses[i] == TRUE){
                 count ++;
             }

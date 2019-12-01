@@ -25,7 +25,7 @@ public class VacationTransitionController {
     @FXML
     private void initialize() {
         if (Main.registered) {
-            displayText.setText("User Data Saved. \n \n Do you want to select a random destination?");
+            displayText.setText("User Data Saved. \n \nDo you want to select a random destination?");
         }
         else {
             displayText.setText("User Data Loaded \n \nDo you want to select a random destination?");

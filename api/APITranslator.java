@@ -15,8 +15,8 @@ public class APITranslator {
     private static final int DEV = 2;
 
     //Set the API type for each usage type.
-    private static final int CURRENT_FLIGHT_API = DEV;
-    private static final int CURRENT_HOTEL_API = DEV;
+    private static final int CURRENT_FLIGHT_API = AMADEUS;
+    private static final int CURRENT_HOTEL_API = AMADEUS;
     private static final int CURRENT_AIRPORT_API = AMADEUS;
 
     /**

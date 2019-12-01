@@ -33,8 +33,8 @@ public class BlackboxTestingClass {
         test2.setUserResponses(test2Responses);
 
         //Set 3 (Normal/Edge case only one location is true)
-        int[] test3Responses = {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1};
-        ArrayList<Integer> correct3 = new ArrayList<Integer>(Arrays.asList(9));
+        int[] test3Responses = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0};
+        ArrayList<Integer> correct3 = new ArrayList<Integer>(Arrays.asList(24));
         test3.setUserResponses(test3Responses);
 
         //Set 4 (Normal case random true values)

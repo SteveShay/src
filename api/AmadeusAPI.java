@@ -26,6 +26,7 @@ public class AmadeusAPI {
         int count = 1;
 
         //Get an API response for flight offers from the origin city to the destination city.
+        //amadeus.shopping.flightOffers.get(Params
         FlightOffer[] flightOffers = amadeus.shopping.flightOffers.get(Params
             .with(ORIGIN, _originAirport)
             .and(DESTINATION, _destinationAirport)

@@ -13,7 +13,7 @@ public class Enumeration {
     public static final String ORIGIN = "origin";
     public static final String DESTINATION = "destination";
     public static final String DEPARTURE_DATE = "departureDate";
-    public static final String TEST_DATE = "2020-1-10";
+    public static final String TEST_DATE = "2020-01-10";
     //Keywords for String splits.
     public static final String FLIGHT_SPLIT = "flight-offer";
     public static final String PRICE_SPLIT = "total";

@@ -28,7 +28,10 @@ public class TravelBucketList {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, ResponseException {        
+    public static void main(String[] args) throws IOException, ResponseException {
+        double fCost = APITranslator.getExpectedFlightCost("GSO", "SBY", TEST_DATE);
+        System.out.println("Price: " + fCost);
+
         double[] latAndLong = DatabaseTranslator.getLocationFromZip(27051);
         System.out.println(latAndLong[0]);
         System.out.println(latAndLong[1]);

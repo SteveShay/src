@@ -19,7 +19,7 @@
                   <Image url="@../../Images/mainBackgro.png" />
                </image>
             </ImageView>
-            <Label fx:id="categoryName" layoutX="123.0" layoutY="14.0" text="Category Name">
+            <Label fx:id="categoryName" layoutX="101.0" layoutY="2.0" prefHeight="78.0" prefWidth="242.0" text="Category Name" textAlignment="CENTER" wrapText="true" alignment="CENTER">
                <font>
                   <Font name="Garamond Bold" size="29.0" />
                </font>
