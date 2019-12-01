@@ -41,7 +41,7 @@ public class LoginController {
             String userFileData = DatabaseTranslator.getUserData(name);
             String[] userData = userFileData.split(INPUT_SPLIT);
             Main.currentUser = CreateUserFromInput.createUser(userData);
-            Main.showMainView();
+            Main.showVacationTransition();
         }
         else{
             Main.showRegister();

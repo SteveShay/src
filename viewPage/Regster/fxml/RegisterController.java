@@ -51,6 +51,7 @@ public class RegisterController {
         }
 
         if(DatabaseTranslator.getLocationFromZip(intZip)[0] != 0.0) {
+            Main.registered = true;
             Main.currentUser = RegisterUser.newUser(name, intZip);
             RegisterUser.storeUser(Main.currentUser.getName(), Main.currentUser.getZipCode(), Main.currentUser.getAirportCode(), Main.currentUser.getCategories(), Main.currentUser.getUserResponses());
             Main.showCategories();

@@ -85,7 +85,7 @@ public class NewUserLocationsController {
 
             Alert saved = new Alert(Alert.AlertType.CONFIRMATION, "All location preferences have been saved.", ButtonType.OK);
             saved.show();
-            Main.showMainView();
+            Main.showVacationTransition();
         }
 
     }

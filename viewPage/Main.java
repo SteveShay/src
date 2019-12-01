@@ -15,11 +15,17 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import models.User;
 import static Enumeration.Enumeration.*;
+import models.Destination;
 
 public class Main extends Application {
     public static User currentUser;
+    public static Destination destination;
     public static int count = 0;
     public static int startIndex = 0;
+    public static boolean registered = false;
+    public static int selection = 0;
+    public static double flight = 0.0;
+    public static double hotel = 0.0;
 
     private static Stage primaryStage;
     private static BorderPane mainLayout;
@@ -34,6 +40,8 @@ public class Main extends Application {
     private static final String SHOWLIST_PATH = "ShowList/fxml/ShowListView.fxml";
     private static final String CATEGORY_PATH = "NewUser/fxml/NewUserCategories.fxml";
     private static final String LOCATIONS_PATH = "NewUser/fxml/NewUserLocations.fxml";
+    private static final String TRANSITON_PATH = "Vacation/fxml/VacationTransition.fxml";
+    private static final String FINAL_PATH = "Vacation/fxml/VacationFinal.fxml";
 
     /**
      * This Method Create the main Stage for all pages.
@@ -126,6 +134,14 @@ public class Main extends Application {
                 loopCategories();
             }
         }
+    }
+
+    public static void showVacationTransition() throws IOException {
+        Main.FxmlLoader(TRANSITON_PATH);
+    }
+
+    public static void showVacationFinal() throws IOException {
+        Main.FxmlLoader(FINAL_PATH);
     }
 
     public static void main(String[] args) {
