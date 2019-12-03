@@ -6,6 +6,7 @@ package viewPage;
  * @author Reagan Berhe
  */
 
+import Database.DatabaseTranslator;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -142,6 +143,12 @@ public class Main extends Application {
 
     public static void showVacationFinal() throws IOException {
         Main.FxmlLoader(FINAL_PATH);
+    }
+
+    public static void save() throws IOException {
+        String output = Main.currentUser.toString();
+        output += DatabaseTranslator.getUserLocations(currentUser.getName());
+        DatabaseTranslator.storeUserData(currentUser.getName(), output);
     }
 
     public static void main(String[] args) {

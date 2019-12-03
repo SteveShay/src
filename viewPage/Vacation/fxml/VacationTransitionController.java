@@ -59,8 +59,11 @@ public class VacationTransitionController {
             }
         }
         else {
+            Alert wait = new Alert(Alert.AlertType.INFORMATION, "Please wait while we retrieve information on your selected destination.");
+            wait.show();
             Main.destination = loadLocation(DatabaseTranslator.mapFilename(Main.currentUser.getName(), Main.selection));
             getFlightAndHotel();
+            wait.close();
             Main.showVacationFinal();
         }
     }

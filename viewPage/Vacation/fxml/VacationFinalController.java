@@ -42,22 +42,14 @@ public class VacationFinalController {
 
     @FXML void acceptDestination() throws IOException {
         Main.currentUser.setSingleResponse(Main.selection, FALSE);
-
-        String output = Main.currentUser.toString();
-        output += DatabaseTranslator.getUserLocations(Main.currentUser.getName());
-        DatabaseTranslator.storeUserData(Main.currentUser.getName(), output);
-
+        Main.save();
         System.exit(0);
     }
 
     @FXML void save() throws IOException {
-        String output = Main.currentUser.toString();
-        output += DatabaseTranslator.getUserLocations(Main.currentUser.getName());
-        DatabaseTranslator.storeUserData(Main.currentUser.getName(), output);
-
+        Main.save();
         Alert saved = new Alert(Alert.AlertType.CONFIRMATION, "All location preferences have been saved.", ButtonType.OK);
         saved.showAndWait();
-
         System.exit(0);
     }
 }

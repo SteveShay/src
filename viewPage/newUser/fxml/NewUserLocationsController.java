@@ -67,10 +67,7 @@ public class NewUserLocationsController {
             Main.currentUser.setSingleResponse(Main.startIndex + 4, TRUE);
         }
 
-        String output = Main.currentUser.toString();
-        output += DatabaseTranslator.getUserLocations(Main.currentUser.getName());
-        DatabaseTranslator.storeUserData(Main.currentUser.getName(), output);
-
+        Main.save();
         Main.count++;
 
         if (Main.count < 5) {
@@ -87,6 +84,5 @@ public class NewUserLocationsController {
             saved.show();
             Main.showVacationTransition();
         }
-
     }
 }

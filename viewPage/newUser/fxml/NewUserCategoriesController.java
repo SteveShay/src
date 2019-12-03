@@ -59,9 +59,7 @@ public class NewUserCategoriesController {
             Alert invalidSelection = new Alert(Alert.AlertType.ERROR, "No categories have been selected. Selecting 5 random locations.", ButtonType.OK);
             invalidSelection.showAndWait();
             Main.currentUser.responseOverride();
-            String output = Main.currentUser.toString();
-            output += DatabaseTranslator.getUserLocations(Main.currentUser.getName());
-            DatabaseTranslator.storeUserData(Main.currentUser.getName(), output);
+            Main.save();
         }
 
 
