@@ -39,10 +39,6 @@ public class Main extends Application {
     private static final String REGISTERPAGE_PATH = "Regster/fxml/RegistrationPageView.fxml";
     private static final String ABOUTUSPAGE_PATH = "Home/fxml/AboutUsView.fxml";
     private static final String COTNTACTUS_PATH = "Home/fxml/ContactUsView.fxml";
-    private static final String CATAGORY1_PATH = "NewUser/fxml/NewUserView.fxml";
-    private static final String CATAGORY2_PATH = "NewUser/fxml/NewUserView2.fxml";
-    private static final String CATAGORY3_PATH = "OtherNewUser/fxml/OthersNewUserView.fxml";
-    private static final String SHOWLIST_PATH = "ShowList/fxml/ShowListView.fxml";
     private static final String CATEGORY_PATH = "NewUser/fxml/NewUserCategories.fxml";
     private static final String LOCATIONS_PATH = "NewUser/fxml/NewUserLocations.fxml";
     private static final String TRANSITON_PATH = "Vacation/fxml/VacationTransition.fxml";
@@ -99,29 +95,6 @@ public class Main extends Application {
      */
     public static void showContactUs() throws IOException {
         Main.FxmlLoader(COTNTACTUS_PATH);
-    }
-
-    /**
-     * This method display using fxml loader and load new user page.
-     */
-    public static void showNewUser() throws IOException {
-        Main.FxmlLoader(CATAGORY1_PATH);
-    }
-
-    /**
-     * This method display using fxml loader and new user page1
-     */
-    public static void showNewUser1() throws IOException {
-        Main.FxmlLoader(CATAGORY2_PATH);
-    }
-
-    public static void showOtherReasons() throws IOException {
-        Main.FxmlLoader(CATAGORY3_PATH);
-    }
-
-    public static void showFinalList() throws IOException {
-        Main.FxmlLoader(SHOWLIST_PATH);
-
     }
 
     public static void showCategories() throws IOException {
