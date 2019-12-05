@@ -31,7 +31,7 @@ public class HomeViewController {
     }
 
     /**
-     * This handle the About us  button on the home page that direct the user to about us page.
+     * This handle the About us button on the home page that direct the user to about us page.
      * @throws IOException
      */
     @FXML

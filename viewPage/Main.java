@@ -1,9 +1,13 @@
 package viewPage;
 
 /**
- * This is a loader page over main pane that display most the pages.
- * Last Updated: 11/25/19
- * @author Reagan Berhe
+ * This is the main controller for the American Travel Bucket List app.
+ * This class contains the primary loader method, the extensions of this loader method for each view,
+ * the static variables which hold the data used by multiple views during operation,
+ * and a small amount of logic for saving data and picking the correct view values.
+ *
+ * Last Updated: 11/30/19
+ * @author Reagan Berhe, Stephen Hampson
  */
 
 import Database.DatabaseTranslator;
