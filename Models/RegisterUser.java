@@ -1,4 +1,4 @@
-package models;
+package Models;
 
 import Database.DatabaseTranslator;
 import static Enumeration.Enumeration.*;

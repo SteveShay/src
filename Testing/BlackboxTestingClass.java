@@ -2,7 +2,7 @@ package Testing;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import models.User;
+import Models.User;
 
 /**
  * Lasted Updated: 11/21/19

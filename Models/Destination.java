@@ -1,4 +1,4 @@
-package models;
+package Models;
 
 /**
  * Lasted Updated: 9/30/19

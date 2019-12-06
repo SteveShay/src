@@ -9,16 +9,16 @@ package travelbucketlist;
 import Database.DatabaseTranslator;
 import java.io.IOException;
 import Database.LoadData;
-import models.Destination;
-import models.User.*;
-import models.User;
+import Models.Destination;
+import Models.User.*;
+import Models.User;
 import static Enumeration.Enumeration.*;
 import api.APITranslator;
 import com.amadeus.exceptions.ResponseException;
 import java.util.Arrays;
-import models.CreateUserFromInput;
-import models.CreateDestinationFromInput;
-import models.RegisterUser;
+import Models.CreateUserFromInput;
+import Models.CreateDestinationFromInput;
+import Models.RegisterUser;
 
 public class TravelBucketList {
     static User currentUser1;

@@ -1,17 +1,12 @@
-package models;
+package Models;
 
 /**
- * Lasted Updated: 11/21/19
+ * Lasted Updated: 12/5/19
  * User specific data which expands on the base data set.
  * @authors Steve Shay
  */
-import Database.DatabaseTranslator;
+
 import static Enumeration.Enumeration.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -89,7 +84,7 @@ public class User extends BaseData {
         int max = this.userResponses[25];
         int selection;
         if (max == 0){
-            return -1;
+            return EMPTY;
         }
 
         //Select a random integer from 1 to the number of true responses. (inclusive)
@@ -130,17 +125,13 @@ public class User extends BaseData {
     /**
      * Check if the user expressed interest in any categories.
      *
-     * @return Return false if any category is true, otherwise return false.
+     * @return Return true if any category is true, otherwise return false.
      */
     public boolean checkCategoriesVaild(){
-        int count = 0;
         for (int i = 0; i < this.categoryResponses.length - 1; i++) {
             if (categoryResponses[i] == TRUE) {
-                count++;
+                return true;
             }
-        }
-        if (count > 0) {
-            return true;
         }
         return false;
     }
