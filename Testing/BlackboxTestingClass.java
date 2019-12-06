@@ -3,6 +3,9 @@ package Testing;
 import java.util.ArrayList;
 import java.util.Arrays;
 import Models.User;
+import api.DevAPI;
+import java.io.IOException;
+import static Enumeration.Enumeration.*;
 
 /**
  * Lasted Updated: 11/21/19
@@ -14,7 +17,7 @@ public class BlackboxTestingClass {
      * Creates the Blackbox testing variables then executes the tests.
      * @param args
      */
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         //Create five dummy users to execute the five tests.
         User test1 = new User("test1", 11111);
         User test2 = new User("test2", 11111);
@@ -48,11 +51,24 @@ public class BlackboxTestingClass {
         test5.setUserResponses(test5Responses);
 
         //Run the tests.
-        System.out.println("Test 1 Edge Case (All True) : " + blackboxTesting(test1, correct1));
-        System.out.println("Test 2 Edge Case (No Trues) : " + blackboxTesting(test2, correct2));
-        System.out.println("Test 3 Edge Case (1 True)   : " + blackboxTesting(test3, correct3));
-        System.out.println("Test 4 Normal Case (14 True): " + blackboxTesting(test4, correct4));
-        System.out.println("Test 5 Normal Case (12 True): " + blackboxTesting(test5, correct5));
+        System.out.println("Test selection of random destination.");
+        System.out.println("Test 1 Edge Case (All True) : " + blackboxTesting1(test1, correct1));
+        System.out.println("Test 2 Error Case (No Trues) : " + blackboxTesting1(test2, correct2));
+        System.out.println("Test 3 Edge Case (1 True)   : " + blackboxTesting1(test3, correct3));
+        System.out.println("Test 4 Normal Case (14 True): " + blackboxTesting1(test4, correct4));
+        System.out.println("Test 5 Normal Case (12 True): " + blackboxTesting1(test5, correct5));
+        System.out.println("");
+        System.out.println("Test Dev API for flight cost.");
+        System.out.println("While the is an error case for no input there are no edge cases.");
+        System.out.println("Test 6 Normal Case ('MCO'): " + DevAPI.getBlackboxResult(FLIGHT_TESTING, "MCO"));
+        System.out.println("Test 7 Error Case ('')    : " + DevAPI.getBlackboxResult(FLIGHT_TESTING, ""));
+        System.out.println("Test 8 Normal Case ('DCA'): " + DevAPI.getBlackboxResult(FLIGHT_TESTING, "DCA"));
+        System.out.println("");
+        System.out.println("Test Dev API for flight cost.");
+        System.out.println("While the is an error case for no input there are no edge cases.");
+        System.out.println("Test 9 Normal Case ('ORL') : " + DevAPI.getBlackboxResult(HOTEL_TESTING, "ORL"));
+        System.out.println("Test 10 Error Case ('')    : " + DevAPI.getBlackboxResult(HOTEL_TESTING, ""));
+        System.out.println("Test 11 Normal Case ('ATL'): " + DevAPI.getBlackboxResult(HOTEL_TESTING, "ATL"));
     }
 
     /**
@@ -62,7 +78,7 @@ public class BlackboxTestingClass {
      * @param _correct The array list of acceptable outputs used to evaluate pass/fail.
      * @return If the selectRandomDestination() method passes more than 95% of tests return 'Pass', otherwise return 'Fail'
      */
-    private static String blackboxTesting (User _user, ArrayList _correct){
+    private static String blackboxTesting1 (User _user, ArrayList _correct){
         //Keeps track of times the test is run.
         int count = 0;
         //Keeps track of the times the method passes.
