@@ -77,4 +77,7 @@ public class Enumeration {
     "Children's Museum of Indianapolis", "Georgia Aquarium", "San Diego Zoo", "Sea World Orlando", "Smithsonian Museum",
     "Boston", "Honolulu", "New Orleans", "New York", "San Francisco",
     "Alamo", "Alcatraz", "Gettysburg", "Kennedy Space Center", "Washington DC"};
+
+    public static final int FLIGHT_TESTING = 1;
+    public static final int HOTEL_TESTING = 2;
 }
