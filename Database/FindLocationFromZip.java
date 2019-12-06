@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import viewPage.Main;
 
 /**
  * Lasted Updated: 10/29/19
@@ -44,13 +45,7 @@ class FindLocationFromZip{
                 result[1] = Double.parseDouble(strLong);
             }
         }
-        if (found){
-           return result;
-        }
-        else{
-            System.out.println("The zip code provided is invalid. Restart to restart registration.");
-            throw new IllegalArgumentException();
-        }
+        return result;
     }
 }
 

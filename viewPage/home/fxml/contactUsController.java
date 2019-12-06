@@ -1,7 +1,7 @@
 package viewPage.Home.fxml;
 /**
  * This class manages the interaction between contact us and home page.
- * Reagan Berhe 
+ * Reagan Berhe
  * 11/04/2019
  */
 
@@ -21,48 +21,43 @@ public class contactUsController {
     private TextField companyFiled;
     @FXML
     private TextField messageField;
-       
+
     /**
      * .... THOSE METHODS ARE UNDER CONSTRUCTION/ NOT DECIDE BY GROUP YET!
-     * 
-     * This Method Store the user full name for their comments on site
+     *
+     * This method store the users full name for their comments on site
      */
     @FXML
     private void showFullName() {
-    	
-    	
     }
-    
+
     /**
-     * This Method Store the user email for their comments on site
+     * This method stores the users email for their comments on site.
      */
     @FXML
     private void showEmailField() {
-    	
     }
-    
+
     /**
-     * This Method Store the user company name for their comment on site
+     * This method stores the users company name for their comment on site.
      */
     @FXML
     private void showNameCompanyField() {
-    	
     }
-    
+
     /**
-     * This Method Store the user message/comment on the site
+     * This method stores the users message/comment on the site.
      */
     @FXML
     private void showMessageField() {
-    	
     }
-    
+
     /**
-     * This Method submit their message and return to home page
+     * This method submits their message and returns to home page.
      */
     @FXML
     private void goHome() throws IOException {
         main.showMainView();
     }
-    
+
 }

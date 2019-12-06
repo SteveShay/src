@@ -1,4 +1,4 @@
-package models;
+package Models;
 
 /**
  * Lasted Updated: 11/21/19
@@ -7,15 +7,29 @@ package models;
  */
 
 class BaseData {
+    //The variables shared by objects extending BaseData.
     private String name;
     private String airportCode;
     private int zipCode;
 
+    /**
+     * Construct a base data object from a name and zip code.
+     *
+     * @param _name The objects name.
+     * @param _zipCode the objects zip code.
+     */
     BaseData(String _name, int _zipCode){
         this.name = _name;
         this.zipCode = _zipCode;
     }
 
+    /**
+     * Construct a base data object from a name, zip code, and airport code.
+     *
+     * @param _name The objects name.
+     * @param _zipCode The objects zip code.
+     * @param _airportCode The objects IATA airport code as a string.
+     */
     BaseData(String _name, int _zipCode, String _airportCode){
         this.name = _name;
         this.zipCode = _zipCode;

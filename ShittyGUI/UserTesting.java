@@ -7,17 +7,17 @@ import static Enumeration.Enumeration.*;
 import Database.DatabaseTranslator;
 import java.io.IOException;
 import Database.LoadData;
-import models.VacationLocation;
-import models.User.*;
-import models.User;
+import Models.Destination;
+import Models.User.*;
+import Models.User;
 import static Enumeration.Enumeration.*;
 import api.APITranslator;
 import com.amadeus.exceptions.ResponseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import models.CreateUserFromInput;
-import models.CreateVacationLocationFromInput;
-import models.RegisterUser;
+import Models.CreateUserFromInput;
+import Models.CreateDestinationFromInput;
+import Models.RegisterUser;
 
 /**
  * Lasted Updated: 11/10/19
@@ -104,7 +104,7 @@ public class UserTesting {
             String[] locationData = locationFileData.split(INPUT_SPLIT);
 
             //Calculate costs.
-            VacationLocation destination = CreateVacationLocationFromInput.createLocation(locationData);
+            Destination destination = CreateDestinationFromInput.createLocation(locationData);
             double flightCost = APITranslator.getExpectedFlightCost(newUser.getAirportCode(), destination.getAirportCode(), "2019-12-22");
             String strFlightCost = String.format("%.2f", flightCost);
             double hotelCost = APITranslator.getExpectedHotelCost(destination.getCityCode());

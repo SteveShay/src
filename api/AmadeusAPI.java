@@ -25,28 +25,35 @@ public class AmadeusAPI {
         double total = 0;
         int count = 1;
 
+        //Get an API response for flight offers from the origin city to the destination city.
+        //amadeus.shopping.flightOffers.get(Params
         FlightOffer[] flightOffers = amadeus.shopping.flightOffers.get(Params
             .with(ORIGIN, _originAirport)
             .and(DESTINATION, _destinationAirport)
             .and(DEPARTURE_DATE, _departureDate));
 
+        //Try to add the first value to the total.
         try {
             total += flightOffers[0].getOfferItems()[0].getPrice().getTotal();
         }
+        //If the addition fails fallover to the dev estimates.
         catch(Exception e){
             return APITranslator.falloverFlightAPI(_originAirport, _destinationAirport, _departureDate);
         }
+
+        //Try to add more offers from the API results to the total.
         try{
             for (int i = 1; i < 5; i++) {
                 total += flightOffers[i].getOfferItems()[0].getPrice().getTotal();
                 count++;
             }
         }
+        //If there aren't 5 results log in the console output how many were used in the average.
         catch(Exception e){
             System.out.println("Only " + count + " hotel offer(s).");
         }
 
-        System.out.println("Flight Total: " + total/count);
+        //Return the average price by dividing by the count of offers added.
         return total/count;
     }
 
@@ -55,7 +62,7 @@ public class AmadeusAPI {
         int count = 1;
         HotelOffer[] offers;
 
-        //Try for API response of hotel offers in destination city
+        //Try for API response of hotel offers in destination city.
         try{
             offers = amadeus.shopping.hotelOffers.get(Params.with("cityCode", _citycode));
         }
@@ -84,17 +91,17 @@ public class AmadeusAPI {
             System.out.println("Only " + count + " hotel offer(s).");
         }
 
-        //Return the averace price by dividing total by count of prices added.
+        //Return the averace price by dividing total by the count of prices added.
         return total/count;
     }
 
     static String getAirportCode(double _latitude, double _longitude) throws ResponseException{
-        Amadeus amadeus = Amadeus
-            .builder(AMADEUS_ID, AMADEUS_SECRET)
-            .build();
+
+        //Request the nearest major airport to the given latitude and longitude from the Amadeus API.
         Location[] locations = amadeus.referenceData.locations.airports.get(Params
             .with("latitude", _latitude)
             .and("longitude", _longitude));
+        //Return the airport code returned by the Amadeus API.
         return locations[0].getIataCode();
     }
 
