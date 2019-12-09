@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewPage.Home.fxml.contactUsController">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewPage.Home.fxml.contactUsController">
    <center>
       <AnchorPane prefHeight="600.0" prefWidth="358.0" BorderPane.alignment="CENTER">
          <children>
@@ -50,7 +50,7 @@
                </font>
             </Label>
             <TextField blendMode="OVERLAY" layoutX="47.0" layoutY="171.0" prefHeight="25.0" prefWidth="276.0" />
-            <TextField blendMode="OVERLAY" layoutX="47.0" layoutY="308.0" prefHeight="25.0" prefWidth="276.0" />
+            <TextField fx:id="companyField" blendMode="OVERLAY" layoutX="47.0" layoutY="308.0" prefHeight="25.0" prefWidth="276.0" />
             <TextField blendMode="OVERLAY" layoutX="47.0" layoutY="238.0" prefHeight="25.0" prefWidth="276.0" />
             <TextArea blendMode="OVERLAY" layoutX="52.0" layoutY="373.0" prefHeight="106.0" prefWidth="280.0" />
             <Button blendMode="DARKEN" layoutX="156.0" layoutY="505.0" mnemonicParsing="false" onAction="#goHome" text="Submit">

@@ -1,6 +1,6 @@
 package Testing;
 
-import api.APITranslator;
+import API.APITranslator;
 import com.amadeus.exceptions.ResponseException;
 import java.io.IOException;
 

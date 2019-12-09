@@ -11,7 +11,7 @@ import Models.Destination;
 import Models.User.*;
 import Models.User;
 import static Enumeration.Enumeration.*;
-import api.APITranslator;
+import API.APITranslator;
 import com.amadeus.exceptions.ResponseException;
 import java.util.ArrayList;
 import java.util.Arrays;

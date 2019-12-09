@@ -22,7 +22,7 @@ public class LoadData {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    static String LoadData (String _FilepathStub, String _name) throws FileNotFoundException, IOException{
+    static String loadData (String _FilepathStub, String _name) throws FileNotFoundException, IOException{
         //Define the file.
         String filepath = _FilepathStub + _name + TXT;
         File inputFile = new File(filepath);
@@ -42,7 +42,7 @@ public class LoadData {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    static String LoadUserLocations (String _name) throws FileNotFoundException, IOException {
+    static String loadUserLocations (String _name) throws FileNotFoundException, IOException {
         String input = "";
         //Define the file.
         String filepath = USER_FILEPATH + _name + TXT;

@@ -1,4 +1,4 @@
-package api;
+package API;
 
 import com.amadeus.exceptions.ResponseException;
 import java.io.IOException;

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewPage.Home.fxml.AboutUsController">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewPage.Home.fxml.AboutUsController">
    <center>
       <AnchorPane prefHeight="600.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,9 +22,9 @@
                   <Glow />
                </effect>
             </ImageView>
-            <TextArea editable="false" layoutX="-3.0" layoutY="47.0" prefHeight="207.0" prefWidth="404.0" text="This level of our organization&#10;makes it easy for users to access&#10;information, whether  they’re &#10;looking for a guide to a specific &#10;city or simply &#10;browsing for trip inspiration. &#9;">
+            <TextArea editable="false" layoutX="-3.0" layoutY="47.0" prefHeight="207.0" prefWidth="404.0" text="The American Travel Bucket list&#9;is here to help indecisive travellers pick their next vacation destination. During registration you'll be presented with a currated series of categories and locations. Indicating which locations you're interested in will allow us to select a random destination based on your interests and provide you with the expected costs of traveling there." wrapText="true">
                <font>
-                  <Font name="Garamond Bold" size="26.0" />
+                  <Font name="Garamond Bold" size="18.0" />
                </font>
                <effect>
                   <Reflection bottomOpacity="0.33" fraction="1.0" topOpacity="0.6" />

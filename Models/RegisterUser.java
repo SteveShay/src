@@ -2,7 +2,7 @@ package Models;
 
 import Database.DatabaseTranslator;
 import static Enumeration.Enumeration.*;
-import api.APITranslator;
+import API.APITranslator;
 import com.amadeus.exceptions.ResponseException;
 import java.io.IOException;
 import java.util.Arrays;
