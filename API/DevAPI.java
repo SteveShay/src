@@ -1,4 +1,4 @@
-package api;
+package API;
 
 import static Enumeration.Enumeration.*;
 import java.io.BufferedReader;

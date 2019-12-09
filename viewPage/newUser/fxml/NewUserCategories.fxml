@@ -19,7 +19,7 @@
                   <Image url="@../../Images/mainBackgro.png" />
                </image>
             </ImageView>
-            <Label layoutX="11.0" layoutY="61.0" text="American Travellers Bucketlist">
+            <Label layoutX="24.0" layoutY="61.0" text="American Travel Bucket List">
                <font>
                   <Font name="Garamond Bold" size="29.0" />
                </font>

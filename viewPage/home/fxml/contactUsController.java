@@ -12,13 +12,12 @@ import javafx.scene.control.TextField;
 import viewPage.Main;
 
 public class contactUsController {
-    private Main main;
     @FXML
     private TextField fullNameField;
     @FXML
     private TextField emailAdressField;
     @FXML
-    private TextField companyFiled;
+    private TextField companyField;
     @FXML
     private TextField messageField;
 
@@ -57,7 +56,7 @@ public class contactUsController {
      */
     @FXML
     private void goHome() throws IOException {
-        main.showMainView();
+        Main.showMainView();
     }
 
 }

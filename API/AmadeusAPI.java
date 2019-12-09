@@ -1,4 +1,4 @@
-package api;
+package API;
 
 import static Enumeration.Enumeration.*;
 import com.amadeus.Amadeus;
@@ -17,21 +17,27 @@ import java.io.IOException;
  */
 public class AmadeusAPI {
     //Our projects Amadeus API key and secret key, built staticly to reduce code duplication
-    public static final String AMADEUS_ID = "L32XhR5nGjRdV3KiGCT58c90NoZ7YAk5";
-    public static final String AMADEUS_SECRET = "W1AWTYJzWte788dg";
-    static final Amadeus amadeus = Amadeus.builder(AMADEUS_ID, AMADEUS_SECRET).build();
+    private static final String AMADEUS_ID = "L32XhR5nGjRdV3KiGCT58c90NoZ7YAk5";
+    private static final String AMADEUS_SECRET = "W1AWTYJzWte788dg";
+    private static final Amadeus amadeus = Amadeus.builder(AMADEUS_ID, AMADEUS_SECRET).build();
 
     static double getExpectedFlightCost (String _originAirport, String _destinationAirport, String _departureDate) throws ResponseException, IOException {
         double total = 0;
         int count = 1;
+        FlightOffer[] flightOffers = null;
 
         //Get an API response for flight offers from the origin city to the destination city.
         //amadeus.shopping.flightOffers.get(Params
-        FlightOffer[] flightOffers = amadeus.shopping.flightOffers.get(Params
-            .with(ORIGIN, _originAirport)
-            .and(DESTINATION, _destinationAirport)
-            .and(DEPARTURE_DATE, _departureDate));
-
+        try {
+            flightOffers = amadeus.shopping.flightOffers.get(Params
+                .with(ORIGIN, _originAirport)
+                .and(DESTINATION, _destinationAirport)
+                .and(DEPARTURE_DATE, _departureDate));
+        }
+        //If the response fails call the fallover option.
+        catch(Exception e){
+            return APITranslator.falloverFlightAPI(_originAirport, _destinationAirport, _departureDate);
+        }
         //Try to add the first value to the total.
         try {
             total += flightOffers[0].getOfferItems()[0].getPrice().getTotal();

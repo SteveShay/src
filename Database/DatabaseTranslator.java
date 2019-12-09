@@ -28,7 +28,7 @@ public class DatabaseTranslator {
     public static String getUserData(String _name) throws IOException{
         switch(CURRENT_USER_DATA){
             case 1:
-                return LoadData.LoadData(USER_FILEPATH, convertName(_name));
+                return LoadData.loadData(USER_FILEPATH, convertName(_name));
             default:
                 System.out.println("No database is selected.");
                 throw new AssertionError();
@@ -45,7 +45,7 @@ public class DatabaseTranslator {
     public static String getUserLocations (String _name) throws IOException{
         switch(CURRENT_USER_DATA){
             case 1:
-                return LoadData.LoadUserLocations(convertName(_name));
+                return LoadData.loadUserLocations(convertName(_name));
             default:
                 System.out.println("No database is selected.");
                 throw new AssertionError();
@@ -81,7 +81,7 @@ public class DatabaseTranslator {
     public static String getLocationData(String _name) throws IOException{
         switch(CURRENT_LOCATION_DATA){
             case 1:
-                return LoadData.LoadData(LOCATION_FILEPATH, _name);
+                return LoadData.loadData(LOCATION_FILEPATH, _name);
             default:
                 System.out.println("No database is selected.");
                 throw new AssertionError();
